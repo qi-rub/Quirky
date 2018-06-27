@@ -34,7 +34,7 @@ import {watchDrags, isMiddleClicking, eventPosRelativeTo} from "src/browser/Mous
 import {ObservableValue, ObservableSource} from "src/base/Obs.js"
 import {initExports, obsExportsIsShowing} from "src/ui/exports.js"
 import {initForge, obsForgeIsShowing} from "src/ui/forge.js"
-import {initMenu, obsMenuIsShowing, closeMenu} from "src/ui/menu.js"
+import {initMenu, obsMenuIsShowing, openMenu, closeMenu} from "src/ui/menu.js"
 import {initUndoRedo} from "src/ui/undo.js"
 import {initClear} from "src/ui/clear.js"
 import {initUrlCircuitSync} from "src/ui/url.js"
@@ -297,8 +297,8 @@ setTimeout(() => {
     redrawNow();
     document.getElementById("loading-div").style.display = 'none';
     document.getElementById("close-menu-button").style.display = 'block';
-    if (!displayed.get().displayedCircuit.circuitDefinition.isEmpty()) {
-        closeMenu();
+    if (displayed.get().displayedCircuit.circuitDefinition.isEmpty() && Config.SHOW_MENU_FOR_EMPTY_CIRCUIT) {
+        openMenu();
     }
 
     try {

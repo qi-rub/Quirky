@@ -14,8 +14,9 @@
 
 import {ObservableValue} from "src/base/Obs.js"
 
-const menuIsVisible = new ObservableValue(true);
+const menuIsVisible = new ObservableValue(false);
 const obsMenuIsShowing = menuIsVisible.observable().whenDifferent();
+let openMenu = () => menuIsVisible.set(true);
 let closeMenu = () => menuIsVisible.set(false);
 
 const groverLink = {
@@ -300,4 +301,4 @@ function initMenu(revision, obsIsAnyOverlayShowing) {
     }
 }
 
-export {initMenu, obsMenuIsShowing, closeMenu}
+export {initMenu, obsMenuIsShowing, openMenu, closeMenu}
