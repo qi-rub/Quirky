@@ -405,8 +405,8 @@ class MathPainter {
      */
     static coordinateSystem(unit) {
         return {
-            dx: new Point(unit / 3, -unit / 3),
-            dy: new Point(unit, 0),
+            dx: new Point(-unit, 0),
+            dy: new Point(unit / 3, unit / 3),
             dz: new Point(0, unit)
         };
     }
