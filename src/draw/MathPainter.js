@@ -300,8 +300,8 @@ class MathPainter {
                             'center',
                             'middle',
                             isComplex ? 'red' : 'black',
-                            '13px sans-serif',
-                            diam,
+                            '10pt monospace',
+                            diam-2,
                             diam);
                     }
                 }
