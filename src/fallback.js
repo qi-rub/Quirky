@@ -47,7 +47,7 @@ let showErrorDiv_forced = (callout, subject, body, isKnownIssueUrl) => {
     document.getElementById('error-mailto-anchor').innerText = 'Email the issue to craig.gidney@gmail.com';
     document.getElementById('error-mailto-anchor').href = [
         'mailto:craig.gidney@gmail.com?subject=',
-        encodeURIComponent('Quirk had an error: ' + subject),
+        encodeURIComponent(Config.TITLE + ' had an error: ' + subject),
         '&body=',
         encodeURIComponent('\n\n\n' + body)
     ].join('');

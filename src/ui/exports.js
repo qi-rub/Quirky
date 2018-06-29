@@ -109,11 +109,11 @@ function initExports(revision, obsIsAnyOverlayShowing) {
             try {
                 let circuitDef = fromJsonText_CircuitDefinition(jsonText);
                 if (!circuitDef.isEmpty()) {
-                    return `Quirk with Circuit - ${circuitDef.readableHash()}.html`;
+                    return `${Config.TITLE} with Circuit - ${circuitDef.readableHash()}.html`;
                 }
             } catch (_) {
             }
-            return 'Quirk.html';
+            return `${Config.TITLE}.html`;
         };
 
         let latest;

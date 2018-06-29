@@ -17,7 +17,8 @@
  */
 class Config {}
 
-Config.EMPTY_CIRCUIT_TITLE = 'Quirk: Quantum Circuit Simulator';
+Config.TITLE = 'Quirk';
+Config.EMPTY_CIRCUIT_TITLE = `${Config.TITLE}: Quantum Circuit Simulator`;
 Config.SHOW_MENU_FOR_EMPTY_CIRCUIT = false;
 
 // Each qubit (when actually used) doubles the cost of simulating each gate applied to the circuit.

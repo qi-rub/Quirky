@@ -16,8 +16,9 @@ var path = require('path');
 
 module.exports = function(grunt) {
     //noinspection JSUnresolvedFunction
+    packageJSON = grunt.file.readJSON('package.json');
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
+        pkg: packageJSON,
         traceur: {
             'translate-src': {
                 options: {
@@ -175,6 +176,7 @@ module.exports = function(grunt) {
         output = output.split("<!-- INCLUDE ERROR PART -->").join(errPart);
         output = output.split("<!-- INCLUDE FORGE PART -->").join(forgePart);
         output = output.split("<!-- INCLUDE EXPORT PART -->").join(exportPart);
+        output = output.split("QUIRK-TITLE").join(packageJSON.title);
         grunt.file.write(dst, output);
     });
 
