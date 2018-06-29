@@ -177,6 +177,7 @@ module.exports = function(grunt) {
         output = output.split("<!-- INCLUDE FORGE PART -->").join(forgePart);
         output = output.split("<!-- INCLUDE EXPORT PART -->").join(exportPart);
         output = output.split("QUIRK-TITLE").join(packageJSON.title);
+        output = output.split("QUIRK-VERSION").join(packageJSON.version);
         grunt.file.write(dst, output);
     });
 
