@@ -24,6 +24,7 @@ Config.SHOW_MENU_FOR_EMPTY_CIRCUIT = false;
 
 Config.PROFILE = 'mini'; // default
 Config.REAL_AMPLITUDES = true;
+Config.COMPLEX_ERROR_THRESHOLD = 1e-4;
 Config.SINGLE_QUBIT_DISPLAYS = false;
 Config.FINAL_AMPLITUDES = false;
 

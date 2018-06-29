@@ -1150,7 +1150,7 @@ class DisplayedCircuit {
         let forceSign = v => (v >= 0 ? '+' : '') + v.toFixed(2);
         MathPainter.paintMatrixTooltip(painter, amplitudeGrid, gridRect, hand.hoverPoints(),
             (c, r) => `Amplitude of |${Util.bin(r*amplitudeGrid.width() + c, numWire)}⟩`,
-            (c, r, v) => 'val:' + v.toString(new Format(false, 0, 6, ", "), Config.REAL_AMPLITUDES),
+            (c, r, v) => 'val:' + v.toString(new Format(false, Config.COMPLEX_ERROR_THRESHOLD, 6, ", "), Config.REAL_AMPLITUDES),
             (c, r, v) => Config.REAL_AMPLITUDES ?
                 `mag²: ${(v.norm2()*100).toFixed(4)}%` :
                 `mag²: ${(v.norm2()*100).toFixed(4)}%, phase: ${forceSign(v.phase() * 180 / Math.PI)}°`);
@@ -1158,7 +1158,7 @@ class DisplayedCircuit {
         this._drawOutputSuperpositionDisplay_labels(painter);
 
         // Complex amplitudes warning
-        if (amplitudeGrid.hasComplex() && Config.REAL_AMPLITUDES) {
+        if (amplitudeGrid.hasComplex(Config.COMPLEX_ERROR_THRESHOLD) && Config.REAL_AMPLITUDES) {
             painter.printParagraph(
                 "complex amplitudes",
                 new Rect(

@@ -461,7 +461,7 @@ class Matrix {
     }
 
     /**
-     * Determines if the matrix contains properly complex entries
+     * Determines if the matrix has complex entries (i.e. complex numbers with nonzeor imaginary part)
      * @param {!number=} epsilon
      * @returns {!boolean}
      */

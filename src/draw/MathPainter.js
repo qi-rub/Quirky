@@ -292,13 +292,14 @@ class MathPainter {
                         let k = (row * numCols + col) * 2;
                         let dr = buf[k];
                         let di = buf[k + 1];
+                        let isComplex = Math.abs(di) > Config.COMPLEX_ERROR_THRESHOLD;
                         painter.print(
-                            di ? 'complex' : fmt.formatFloat(dr),
+                            isComplex ? 'complex' : fmt.formatFloat(dr),
                             x + diam * (col + 0.5),
                             y + diam * (row + 0.5),
                             'center',
                             'middle',
-                            di ? 'red' : 'black',
+                            isComplex ? 'red' : 'black',
                             '13px sans-serif',
                             diam,
                             diam);

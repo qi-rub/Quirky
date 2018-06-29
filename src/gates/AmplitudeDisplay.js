@@ -362,7 +362,7 @@ const AMPLITUDE_DRAWER_FROM_CUSTOM_STATS = GatePainting.makeDisplayDrawer(args =
     } else {
         MathPainter.paintMatrixTooltip(args.painter, matrix, drawRect, args.focusPoints,
             (c, r) => `Amplitude of |${Util.bin(r*matrix.width() + c, args.gate.height)}⟩`,
-            (c, r, v) => 'val: ' + v.toString(new Format(false, 0, 6, ", "), Config.REAL_AMPLITUDES),
+            (c, r, v) => 'val: ' + v.toString(new Format(false, Config.COMPLEX_ERROR_THRESHOLD, 6, ", "), Config.REAL_AMPLITUDES),
             (c, r, v) => Config.REAL_AMPLITUDES ?
                 `mag²: ${(v.norm2()*100).toFixed(4)}%` :
                 `mag²: ${(v.norm2()*100).toFixed(4)}%, phase: ${forceSign(v.phase() * 180 / Math.PI)}°`);
@@ -387,7 +387,7 @@ const AMPLITUDE_DRAWER_FROM_CUSTOM_STATS = GatePainting.makeDisplayDrawer(args =
         }
     }
 
-    if (matrix.hasComplex() && Config.REAL_AMPLITUDES) {
+    if (matrix.hasComplex(Config.COMPLEX_ERROR_THRESHOLD) && Config.REAL_AMPLITUDES) {
         args.painter.print(
             'complex amplitudes',
             args.rect.x+args.rect.w/2,
