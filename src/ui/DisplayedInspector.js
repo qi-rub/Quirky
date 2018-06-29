@@ -39,8 +39,11 @@ class DisplayedInspector {
         /** @type {!DisplayedToolbox} */
         this.displayedToolboxTop = displayedToolboxTop;
         /** @type {!DisplayedToolbox} */
-        this.displayedToolboxBottom = displayedToolboxBottom.
-            withCustomGatesInserted(circuitWidget.circuitDefinition.customGateSet);
+        if (circuitWidget.circuitDefinition.customGateSet.gates.length > 0) {
+            this.displayedToolboxBottom = displayedToolboxBottom.withCustomGatesInserted(circuitWidget.circuitDefinition.customGateSet);
+        } else {
+            this.displayedToolboxBottom = displayedToolboxBottom;
+        }
         /** @type {!Hand} */
         this.hand = hand;
         /** @type {!Rect} */

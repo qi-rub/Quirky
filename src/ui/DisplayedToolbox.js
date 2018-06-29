@@ -348,7 +348,11 @@ class DisplayedToolbox {
      * @returns {!number}
      */
     desiredHeight() {
-        return (1 + this.groupHeight) * (Config.GATE_RADIUS * 2 + 2) - Config.GATE_RADIUS;
+        if (this.toolboxGroups.length > 0 ) {
+            return (1 + this.groupHeight) * (Config.GATE_RADIUS * 2 + 2) - Config.GATE_RADIUS;
+        } else {
+            return 10;
+        }
     }
 
     /**
