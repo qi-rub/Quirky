@@ -52,6 +52,10 @@ function initForge(revision, obsIsAnyOverlayShowing) {
         const forgeButton = /** @type {!HTMLButtonElement} */ document.getElementById('gate-forge-button');
         const forgeOverlay = /** @type {!HTMLDivElement} */ document.getElementById('gate-forge-overlay');
         const forgeDiv = /** @type {HTMLDivElement} */ document.getElementById('gate-forge-div');
+        const forgeSpan = /** @type {HTMLSpanElement} */ document.getElementById('gate-forge-span');
+        if (Config.PROFILE == 'default') {
+            forgeSpan.style.display = 'inline';
+        }
         forgeButton.addEventListener('click', () => forgeIsVisible.set(true));
         forgeOverlay.addEventListener('click', () => forgeIsVisible.set(false));
         obsIsAnyOverlayShowing.subscribe(e => { forgeButton.disabled = e; });
