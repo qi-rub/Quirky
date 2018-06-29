@@ -3,7 +3,7 @@
   "title": "MiniQuirk",
   "description": "A drag-and-drop toy for exploring and understanding small quantum circuits.",
   "license": "Apache-2.0",
-  "version": "2.1.0",
+  "version": "0.1.0",
   "homepage": "https://github.com/catch22/MiniQuirk",
   "bugs": {
     "url": "https://github.com/catch22/MiniQuirk/issues"
