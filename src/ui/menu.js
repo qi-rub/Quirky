@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import {ObservableValue} from "src/base/Obs.js"
+import {Config} from "src/Config.js"
 
 const menuIsVisible = new ObservableValue(false);
 const obsMenuIsShowing = menuIsVisible.observable().whenDifferent();
@@ -249,6 +250,10 @@ function initMenu(revision, obsIsAnyOverlayShowing) {
         const closeMenuButton = /** @type {!HTMLButtonElement} */ document.getElementById('close-menu-button');
         const menuOverlay = /** @type {!HTMLDivElement} */ document.getElementById('menu-overlay');
         const menutDiv = /** @type {HTMLDivElement} */ document.getElementById('menu-div');
+        const menuSpan = /** @type {HTMLSpanElement} */ document.getElementById('menu-span');
+        if (Config.PROFILE == 'default') {
+            menuSpan.style.display = 'inline';
+        }
         menuButton.addEventListener('click', () => menuIsVisible.set(true));
         obsIsAnyOverlayShowing.subscribe(e => { menuButton.disabled = e; });
         menuOverlay.addEventListener('click', () => menuIsVisible.set(false));
