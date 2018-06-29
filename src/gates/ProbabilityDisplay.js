@@ -239,7 +239,7 @@ function paintMultiProbabilityDisplay(args) {
  */
 function shared_chanceGateMaker(builder) {
     return builder.
-        setSymbol("Chance").
+        setSymbol("Prob").
         setTitle("Probability Display").
         setBlurb("Shows chances of outcomes if a measurement was performed.\n" +
             "Use controls to see conditional probabilities.").
