@@ -51,7 +51,11 @@ function _paintBlochSphereDisplay_tooltips(
         c.x+u*Math.sqrt(0.5),
         c.y-u*Math.sqrt(0.5),
         'Bloch sphere representation of local state',
+        Config.REAL_AMPLITUDES ?
+        `r:${forceSign(d)}, θ:${deg(θ)}` :
         `r:${forceSign(d)}, ϕ:${deg(ϕ)}, θ:${deg(θ)}`,
+        Config.REAL_AMPLITUDES ?
+        `x:${forceSign(-x)}, z:${forceSign(-z)}` :
         `x:${forceSign(-x)}, y:${forceSign(y)}, z:${forceSign(-z)}`);
 }
 

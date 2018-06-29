@@ -134,10 +134,10 @@ class Complex {
      * @param {=Format} format
      * @returns {!string}
      */
-    toString(format) {
+    toString(format, allowSingleValue) {
         format = format || Format.EXACT;
 
-        return format.allowAbbreviation ?
+        return (format.allowAbbreviation || allowSingleValue) ?
             this._toString_allowSingleValue(format) :
             this._toString_bothValues(format);
     }

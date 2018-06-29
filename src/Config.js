@@ -22,6 +22,8 @@ Config.EMPTY_CIRCUIT_TITLE = `${Config.TITLE}: Quantum Circuit Simulator`;
 
 Config.SHOW_MENU_FOR_EMPTY_CIRCUIT = false;
 
+Config.REAL_AMPLITUDES = true;
+
 // Each qubit (when actually used) doubles the cost of simulating each gate applied to the circuit.
 // Also each qubit tends to increase the amount of accuracy required.
 // I see obvious errors when I set this to 20, and things get pretty laggy past 16.

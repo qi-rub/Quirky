@@ -357,13 +357,15 @@ const AMPLITUDE_DRAWER_FROM_CUSTOM_STATS = GatePainting.makeDisplayDrawer(args =
     if (isIncoherent) {
         MathPainter.paintMatrixTooltip(args.painter, matrix, drawRect, args.focusPoints,
             (c, r) => `Chance of |${Util.bin(r*matrix.width() + c, args.gate.height)}⟩ [amplitude not defined]`,
-            (c, r, v) => `raw: ${(v.norm2()*100).toFixed(4)}%, log: ${(Math.log10(v.norm2())*10).toFixed(1)} dB`,
+            (c, r, v) => `raw: ${(v.norm2()*100).toFixed(4)}%`, // , log: ${(Math.log10(v.norm2())*10).toFixed(1)} dB`,
             (c, r, v) => '[entangled with other qubits]');
     } else {
         MathPainter.paintMatrixTooltip(args.painter, matrix, drawRect, args.focusPoints,
             (c, r) => `Amplitude of |${Util.bin(r*matrix.width() + c, args.gate.height)}⟩`,
-            (c, r, v) => 'val:' + v.toString(new Format(false, 0, 5, ", ")),
-            (c, r, v) => `mag²:${(v.norm2()*100).toFixed(4)}%, phase:${forceSign(v.phase() * 180 / Math.PI)}°`);
+            (c, r, v) => 'val: ' + v.toString(new Format(false, 0, 6, ", "), Config.REAL_AMPLITUDES),
+            (c, r, v) => Config.REAL_AMPLITUDES ?
+                `mag²: ${(v.norm2()*100).toFixed(4)}%` :
+                `mag²: ${(v.norm2()*100).toFixed(4)}%, phase: ${forceSign(v.phase() * 180 / Math.PI)}°`);
         if (phaseLockIndex !== undefined) {
             let cw = drawRect.w/matrix.width();
             let rh = drawRect.h/matrix.height();
@@ -383,6 +385,20 @@ const AMPLITUDE_DRAWER_FROM_CUSTOM_STATS = GatePainting.makeDisplayDrawer(args =
                 cw*0.5,
                 rh*0.5);
         }
+    }
+
+    if (matrix.hasComplex() && Config.REAL_AMPLITUDES) {
+        args.painter.print(
+            'complex amplitudes',
+            args.rect.x+args.rect.w/2,
+            args.rect.y+args.rect.h+12,
+            'center',
+            'hanging',
+            'red',
+            '12px sans-serif',
+            args.rect.w,
+            args.rect.h,
+            undefined);
     }
 
     paintErrorIfPresent(args, isIncoherent);

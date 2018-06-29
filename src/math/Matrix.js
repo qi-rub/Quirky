@@ -461,6 +461,24 @@ class Matrix {
     }
 
     /**
+     * Determines if the matrix contains properly complex entries
+     * @param {!number=} epsilon
+     * @returns {!boolean}
+     */
+    hasComplex(epsilon=0) {
+        for (let c = 0; c < this._width; c++) {
+            for (let r = 0; r < this._height; r++) {
+                let k = (this._width*r + c)*2;
+                let di = Math.abs(this._buffer[k+1]);
+                if (isNaN(di) || di > epsilon) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
      * Determines if the matrix is square and only has entries along its main diagonal.
      * @param {!number=} epsilon
      * @returns {!boolean}

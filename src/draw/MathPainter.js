@@ -273,13 +273,37 @@ class MathPainter {
             }
 
             // Circles.
-            if (amplitudeCircleFillColor !== undefined) {
-                traceCellsWith(MathPainter._traceAmplitudeProbabilityCircle).
-                    thenFill(amplitudeCircleFillColor).
-                    thenStroke(amplitudeCircleStrokeColor, 0.5);
+            if (!Config.REAL_AMPLITUDES) {
+                if (amplitudeCircleFillColor !== undefined) {
+                    traceCellsWith(MathPainter._traceAmplitudeProbabilityCircle).
+                        thenFill(amplitudeCircleFillColor).
+                        thenStroke(amplitudeCircleStrokeColor, 0.5);
 
-                traceCellsWith(MathPainter._traceAmplitudeLogarithmCircle).
-                    thenStroke(logCircleStrokeColor, 0.5);
+                    traceCellsWith(MathPainter._traceAmplitudeLogarithmCircle).
+                        thenStroke(logCircleStrokeColor, 0.5);
+                }
+            }
+
+            // Real amplitudes
+            if (Config.REAL_AMPLITUDES) {
+                let fmt = new Format(true, 0, 4, ", ");
+                for (let row = 0; row < numRows; row++) {
+                    for (let col = 0; col < numCols; col++) {
+                        let k = (row * numCols + col) * 2;
+                        let dr = buf[k];
+                        let di = buf[k + 1];
+                        painter.print(
+                            di ? 'complex' : fmt.formatFloat(dr),
+                            x + diam * (col + 0.5),
+                            y + diam * (row + 0.5),
+                            'center',
+                            'middle',
+                            di ? 'red' : 'black',
+                            '13px sans-serif',
+                            diam,
+                            diam);
+                    }
+                }
             }
         }
 
@@ -289,9 +313,11 @@ class MathPainter {
 
         if (!hasNaN) {
             // Phase lines.
-            if (logCircleStrokeColor !== undefined) {
-                traceCellsWith(MathPainter._traceAmplitudePhaseDirection).
-                    thenStroke(amplitudePhaseStrokeColor);
+            if (!Config.REAL_AMPLITUDES) {
+                if (logCircleStrokeColor !== undefined) {
+                    traceCellsWith(MathPainter._traceAmplitudePhaseDirection).
+                        thenStroke(amplitudePhaseStrokeColor);
+                }
             }
         }
 
