@@ -333,9 +333,11 @@ if (Config.PROFILE == 'default') {
             hint: "Gates",
             gates: [
                 MeasurementGate,
-                Controls.Control,
-                HalfTurnGates.Z, SwapGateHalf,
-                HalfTurnGates.X, HalfTurnGates.H
+                undefined,
+                HalfTurnGates.X,
+                HalfTurnGates.Z,
+                HalfTurnGates.H,
+                Controls.Control
             ]
         },
         {
