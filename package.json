@@ -1,12 +1,12 @@
 {
-  "name": "quirk-quantum-circuit-simulator",
-  "title": "Quirk",
+  "name": "miniquirk-quantum-circuit-simulator",
+  "title": "MiniQuirk",
   "description": "A drag-and-drop toy for exploring and understanding small quantum circuits.",
   "license": "Apache-2.0",
   "version": "2.1.0",
-  "homepage": "https://github.com/Strilanc/Quirk",
+  "homepage": "https://github.com/catch22/MiniQuirk",
   "bugs": {
-    "url": "https://github.com/Strilanc/Quirk/issues"
+    "url": "https://github.com/catch22/MiniQuirk/issues"
   },
   "devDependencies": {
     "grunt": "~1.0.1",
@@ -31,6 +31,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Strilanc/Quirk.git"
+    "url": "https://github.com/catch22/MiniQuirk.git"
   }
 }
