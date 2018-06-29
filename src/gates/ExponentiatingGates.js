@@ -89,13 +89,23 @@ ExponentiatingGates.ZBackward = new GateBuilder().
     promiseEffectOnlyPhases().
     gate;
 
+ExponentiatingGates.RotateQubit = new GateBuilder().
+    setSerializedIdAndSymbol("Rotate").
+    setTitle("Rotation gate").
+    setBlurb("Clockwise rotation from |0> via |+> via |1> via |-> back to |0>.").
+    setDrawer(GatePainting.makeCycleDrawer(0.5, 1, 2)).
+    setEffectToTimeVaryingMatrix(YExp).
+    promiseEffectIsUnitary().
+    gate;
+
 ExponentiatingGates.all = [
     ExponentiatingGates.XBackward,
     ExponentiatingGates.YBackward,
     ExponentiatingGates.ZBackward,
     ExponentiatingGates.XForward,
     ExponentiatingGates.YForward,
-    ExponentiatingGates.ZForward
+    ExponentiatingGates.ZForward,
+    ExponentiatingGates.RotateQubit
 ];
 
 export {ExponentiatingGates}

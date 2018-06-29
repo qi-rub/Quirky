@@ -161,13 +161,25 @@ CountingGates.LeftShiftRotatingFamily = Gate.buildFamily(2, 16, (span, builder) 
     setActualEffectToShaderProvider(ctx => cycleBitsShader(ctx, span, Math.floor(ctx.time*span))).
     setKnownEffectToTimeVaryingPermutation((t, i) => bitOffsetPermutation(t, +1, span, i)));
 
+CountingGates.StepFamily = Gate.buildFamily(1, 16, (span, builder) => builder.
+    setSerializedId("Step" + span).
+    setSymbol("Step").
+    setTitle("Step gate").
+    setBlurb("Add time-dependent binary number to inputs qubits.").
+    setDrawer(STAIRCASE_DRAWER(0, 1 << span)).
+    setActualEffectToShaderProvider(ctx => offsetShader.withArgs(
+        ...ketArgs(ctx, span),
+        WglArg.float("amount", Math.floor(ctx.time*(1<<span))))).
+    setKnownEffectToTimeVaryingPermutation((t, i) => offsetPermutation(t, +1, span, i)));
+
 CountingGates.all = [
     CountingGates.ClockPulseGate,
     CountingGates.QuarterPhaseClockPulseGate,
     ...CountingGates.CountingFamily.all,
     ...CountingGates.UncountingFamily.all,
     ...CountingGates.RightShiftRotatingFamily.all,
-    ...CountingGates.LeftShiftRotatingFamily.all
+    ...CountingGates.LeftShiftRotatingFamily.all,
+    ...CountingGates.StepFamily.all,
 ];
 
 export {CountingGates}

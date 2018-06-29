@@ -348,6 +348,13 @@ if (Config.PROFILE == 'default') {
                 AmplitudeDisplayFamily.ofSize(2)
             ]
         },
+        {
+            hint: "Signals",
+            gates: [
+                ExponentiatingGates.RotateQubit,
+                CountingGates.StepFamily.ofSize(1),
+            ]
+        },
     ];
 
     /** @type {!Array<!{hint: !string, gates: !Array<undefined|!Gate>}>} */
