@@ -1093,24 +1093,28 @@ class DisplayedCircuit {
         let blochCol = chanceCol + 1;
         let numWire = this.importantWireCount();
 
-        for (let i = 0; i < numWire; i++) {
-            let p = stats.controlledWireProbabilityJustAfter(i, Infinity);
-            MathPainter.paintProbabilityBox(painter, p, this.gateRect(i, chanceCol), hand.hoverPoints());
-            let m = stats.qubitDensityMatrix(Infinity, i);
-            if (m !== undefined) {
-                paintBlochSphereDisplay(painter, m, this.gateRect(i, blochCol), hand.hoverPoints());
+        if (Config.SINGLE_QUBIT_DISPLAYS) {
+            for (let i = 0; i < numWire; i++) {
+                let p = stats.controlledWireProbabilityJustAfter(i, Infinity);
+                MathPainter.paintProbabilityBox(painter, p, this.gateRect(i, chanceCol), hand.hoverPoints());
+                let m = stats.qubitDensityMatrix(Infinity, i);
+                if (m !== undefined) {
+                    paintBlochSphereDisplay(painter, m, this.gateRect(i, blochCol), hand.hoverPoints());
+                }
             }
+
+            let bottom = this.wireRect(numWire-1).bottom();
+            let x = this.opRect(chanceCol - 1).x;
+            painter.printParagraph(
+                "Local wire states\n(Chance/Bloch)",
+                new Rect(x, bottom+4, 190, 40),
+                new Point(0.5, 0),
+                'gray');
         }
 
-        let bottom = this.wireRect(numWire-1).bottom();
-        let x = this.opRect(chanceCol - 1).x;
-        painter.printParagraph(
-            "Local wire states\n(Chance/Bloch)",
-            new Rect(x, bottom+4, 190, 40),
-            new Point(0.5, 0),
-            'gray');
-
-        this._drawOutputSuperpositionDisplay(painter, stats, hand);
+        if (Config.FINAL_AMPLITUDES) {
+            this._drawOutputSuperpositionDisplay(painter, stats, hand);
+        }
     }
 
     /**
@@ -1202,7 +1206,7 @@ class DisplayedCircuit {
      * @private
      */
     _rectForSuperpositionDisplay() {
-        let col = this.clampedCircuitColCount() + EXTRA_COLS_FOR_SINGLE_QUBIT_DISPLAYS + 1;
+        let col = this.clampedCircuitColCount() + (Config.SINGLE_QUBIT_DISPLAYS ? EXTRA_COLS_FOR_SINGLE_QUBIT_DISPLAYS : 0) + 1;
         let numWire = this.importantWireCount();
         let [colWires, rowWires] = [Math.floor(numWire/2), Math.ceil(numWire/2)];
         let [colCount, rowCount] = [1 << colWires, 1 << rowWires];

@@ -23,6 +23,8 @@ Config.EMPTY_CIRCUIT_TITLE = `${Config.TITLE}: Quantum Circuit Simulator`;
 Config.SHOW_MENU_FOR_EMPTY_CIRCUIT = false;
 
 Config.REAL_AMPLITUDES = true;
+Config.SINGLE_QUBIT_DISPLAYS = false;
+Config.FINAL_AMPLITUDES = false;
 
 // Each qubit (when actually used) doubles the cost of simulating each gate applied to the circuit.
 // Also each qubit tends to increase the amount of accuracy required.
