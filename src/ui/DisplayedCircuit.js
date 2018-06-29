@@ -1227,28 +1227,30 @@ class DisplayedCircuit {
         let gridRect = this._rectForSuperpositionDisplay();
 
         // Amplitude hint.
-        painter.print(
-            'Final amplitudes',
-            gridRect.right() + 3,
-            gridRect.bottom() + 3,
-            'left',
-            'top',
-            'gray',
-            '12px sans-serif',
-            100,
-            20);
+        if (Config.FINAL_AMPLITUDES) {
+            painter.print(
+                'Final amplitudes',
+                gridRect.right() + 3,
+                gridRect.bottom() + 3,
+                'left',
+                'top',
+                'gray',
+                '12px sans-serif',
+                100,
+                20);
 
-        // Deferred measurement warning.
-        if (this.circuitDefinition.colIsMeasuredMask(Infinity) !== 0) {
-            painter.printParagraph(
-                "(assuming measurement deferred)",
-                new Rect(
-                    gridRect.right() + 3,
-                    gridRect.bottom() + 20,
-                    100,
-                    75),
-                new Point(0.5, 0),
-                'red');
+            // Deferred measurement warning.
+            if (this.circuitDefinition.colIsMeasuredMask(Infinity) !== 0) {
+                painter.printParagraph(
+                    "(assuming measurement deferred)",
+                    new Rect(
+                        gridRect.right() + 3,
+                        gridRect.bottom() + 20,
+                        100,
+                        75),
+                    new Point(0.5, 0),
+                    'red');
+            }
         }
 
         // Discard rate warning.
