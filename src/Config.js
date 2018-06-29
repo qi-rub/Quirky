@@ -22,6 +22,7 @@ Config.EMPTY_CIRCUIT_TITLE = `${Config.TITLE}: Quantum Circuit Simulator`;
 
 Config.SHOW_MENU_FOR_EMPTY_CIRCUIT = false;
 
+Config.PROFILE = 'mini'; // default
 Config.REAL_AMPLITUDES = true;
 Config.SINGLE_QUBIT_DISPLAYS = false;
 Config.FINAL_AMPLITUDES = false;
