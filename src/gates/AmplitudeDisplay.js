@@ -366,7 +366,7 @@ const AMPLITUDE_DRAWER_FROM_CUSTOM_STATS = GatePainting.makeDisplayDrawer(args =
             (c, r, v) => Config.REAL_AMPLITUDES ?
                 `mag²: ${(v.norm2()*100).toFixed(4)}%` :
                 `mag²: ${(v.norm2()*100).toFixed(4)}%, phase: ${forceSign(v.phase() * 180 / Math.PI)}°`);
-        if (phaseLockIndex !== undefined) {
+        if (phaseLockIndex !== undefined && !Config.REAL_AMPLITUDES) {
             let cw = drawRect.w/matrix.width();
             let rh = drawRect.h/matrix.height();
             let c = phaseLockIndex % matrix.width();
