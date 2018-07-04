@@ -188,13 +188,14 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-traceur');
 
+    htmlfile = packageJSON.title.toLowerCase() + '.html';
     grunt.registerTask('build-src', [
         'clean:clean-tmp',
         'traceur:translate-src',
         'bootstrap-get-packages:src/main.js:out/tmp/traceur/bootstrap_post_src/run_main.js',
         'concat:concat-traceur-src',
         'uglify:uglify-concatenated-src',
-        'inject-js-into-html:html/quirk.template.html:out/tmp/minified-src.js:out/quirk.html',
+        'inject-js-into-html:html/quirk.template.html:out/tmp/minified-src.js:out/' + htmlfile,
         'clean:clean-tmp'
     ]);
     grunt.registerTask('build-debug', [
@@ -202,7 +203,7 @@ module.exports = function(grunt) {
         'traceur:translate-src',
         'bootstrap-get-packages:src/main.js:out/tmp/traceur/bootstrap_post_src/run_main.js',
         'concat:concat-traceur-src',
-        'inject-js-into-html:html/quirk.template.html:out/tmp/concatenated-src.js:out/quirk.html',
+        'inject-js-into-html:html/quirk.template.html:out/tmp/concatenated-src.js:out/' + htmlfile,
         'clean:clean-tmp'
     ]);
     grunt.registerTask('build-test', [
