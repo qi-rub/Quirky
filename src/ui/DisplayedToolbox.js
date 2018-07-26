@@ -77,8 +77,8 @@ class DisplayedToolbox {
         let groups = [...this._originalGroups];
         for (let i = 0; i < Math.max(1, customGateSet.gates.length); i += this.groupHeight*2) {
             let group = {
-                hint: 'Custom Gates',
-                gates: [undefined, undefined, undefined, undefined, undefined, undefined]
+                hint: 'Custom',
+                gates: [undefined, undefined]
             };
             for (let j = 0; j < this.groupHeight*2 && i + j < customGateSet.gates.length; j++) {
                 group.gates[j] = customGateSet.gates[i + j];
