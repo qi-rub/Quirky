@@ -16,7 +16,14 @@ var path = require('path');
 
 module.exports = function(grunt) {
     //noinspection JSUnresolvedFunction
-    packageJSON = grunt.file.readJSON('package.json');
+    var packageJSON = grunt.file.readJSON('package.json');
+
+    var profile = grunt.option('profile') || "Default";
+    var title = 'Quirky: ' + profile;
+    var version = packageJSON.version;
+    var profilefile = 'src/profile/' + profile.replace(' ', '') + '.js';
+    var htmlfile = 'Quirky' + profile.replace(' ', '') + '.html';
+
     grunt.initConfig({
         pkg: packageJSON,
         traceur: {
@@ -145,7 +152,7 @@ module.exports = function(grunt) {
         },
         clean: {
             'clean-tmp': ['out/tmp'],
-            'clean-out': ['out/']
+            'clean-out': ['out/'],
         },
         makeTestPostBootstrap: {
             options: {
@@ -176,9 +183,14 @@ module.exports = function(grunt) {
         output = output.split("<!-- INCLUDE ERROR PART -->").join(errPart);
         output = output.split("<!-- INCLUDE FORGE PART -->").join(forgePart);
         output = output.split("<!-- INCLUDE EXPORT PART -->").join(exportPart);
-        output = output.split("QUIRK-TITLE").join(packageJSON.title);
-        output = output.split("QUIRK-VERSION").join(packageJSON.version);
         grunt.file.write(dst, output);
+    });
+
+    grunt.registerTask('configure-profile', function() {
+        var output = 'import {Config} from "' + profilefile + '"\n';
+        output += 'Config.VERSION = "' + version + '";\n';
+        output += 'export {Config}\n';
+        grunt.file.write('src/Config.js', output);
     });
 
     grunt.loadNpmTasks('grunt-contrib-clean');
@@ -188,9 +200,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-traceur');
 
-    htmlfile = packageJSON.title.toLowerCase() + '.html';
     grunt.registerTask('build-src', [
         'clean:clean-tmp',
+        'configure-profile',
         'traceur:translate-src',
         'bootstrap-get-packages:src/main.js:out/tmp/traceur/bootstrap_post_src/run_main.js',
         'concat:concat-traceur-src',
@@ -200,6 +212,7 @@ module.exports = function(grunt) {
     ]);
     grunt.registerTask('build-debug', [
         'clean:clean-tmp',
+        'configure-profile',
         'traceur:translate-src',
         'bootstrap-get-packages:src/main.js:out/tmp/traceur/bootstrap_post_src/run_main.js',
         'concat:concat-traceur-src',
@@ -208,6 +221,7 @@ module.exports = function(grunt) {
     ]);
     grunt.registerTask('build-test', [
         'clean:clean-tmp',
+        'configure-profile',
         'traceur:translate-src',
         'traceur:translate-test',
         'bootstrap-get-packages:test/**/*.test.js:out/tmp/traceur/bootstrap_post_test/run_tests.js',
@@ -216,6 +230,7 @@ module.exports = function(grunt) {
     ]);
     grunt.registerTask('build-test-perf', [
         'clean:clean-tmp',
+        'configure-profile',
         'traceur:translate-src',
         'traceur:translate-test-perf',
         'bootstrap-get-packages:test_perf/**/*.perf.js:out/tmp/traceur/bootstrap_post_test/run_tests.js',

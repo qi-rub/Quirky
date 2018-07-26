@@ -3,7 +3,7 @@
   "title": "Quirky",
   "description": "A drag-and-drop toy for exploring and understanding small quantum circuits.",
   "license": "Apache-2.0",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "https://github.com/catch22/Quirky",
   "bugs": {
     "url": "https://github.com/catch22/Quirky/issues"
@@ -24,6 +24,7 @@
   },
   "scripts": {
     "build": "grunt build-src",
+    "build-debug": "grunt build-debug",
     "test": "grunt test",
     "test-chrome": "grunt test-chrome",
     "test-firefox": "grunt test-firefox",

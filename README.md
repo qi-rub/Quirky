@@ -9,8 +9,8 @@ We are simplifying Quirk in the context of developing a quantum computing course
 
 ```
 npm install
-# npm run test-firefox
-npm run build
+npm run build -- --profile="Quest 1"
+# npm run build-debug -- --profile="Quest 1"
 ```
 
-Confirm the output works by opening `out/quirky.html` with a web browser.
+Confirm the output works by opening `out/QuirkyQuest1.html` with a web browser.

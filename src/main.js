@@ -48,6 +48,15 @@ initSerializer(
     GATE_CIRCUIT_DRAWER,
     GatePainting.LOCATION_INDEPENDENT_GATE_DRAWER);
 
+const quirkMenuTitleSpan = document.getElementById("quirk-menu-title");
+quirkMenuTitleSpan.innerText = Config.LONG_TITLE;
+
+const quirkMenuSubtitleSpan = document.getElementById("quirk-menu-subtitle");
+quirkMenuSubtitleSpan.innerText = Config.LONG_SUBTITLE;
+
+const quirkMenuVersionSpan = document.getElementById("quirk-menu-version");
+quirkMenuVersionSpan.innerText = "Version " + Config.VERSION;
+
 const canvasDiv = document.getElementById("canvasDiv");
 
 //noinspection JSValidateTypes
