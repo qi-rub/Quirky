@@ -17,7 +17,7 @@
  */
 class Config {}
 
-Config.TITLE = 'MiniQuirk';
+Config.TITLE = 'Quirky';
 Config.EMPTY_CIRCUIT_TITLE = `${Config.TITLE}: Quantum Circuit Simulator`;
 
 Config.SHOW_MENU_FOR_EMPTY_CIRCUIT = false;
