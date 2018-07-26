@@ -4,7 +4,6 @@ Config.TITLE = 'Quirky Q1';
 Config.LONG_TITLE = 'The Quirky Quantum Simulator';
 Config.LONG_SUBTITLE = 'Quest 1: Conquer the qubit';
 
-Config.SHOW_MENU_FOR_EMPTY_CIRCUIT = false;
 Config.DRAW_HINTS = false;
 Config.SHOW_MAX_WIRES_WARNING = false;
 

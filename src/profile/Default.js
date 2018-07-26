@@ -18,7 +18,6 @@ Config.TITLE = 'Quirky';
 Config.LONG_TITLE = 'The Quirky Quantum Simulator';
 Config.LONG_SUBTITLE = '';
 
-Config.SHOW_MENU_FOR_EMPTY_CIRCUIT = true;
 Config.DRAW_HINTS = true;
 Config.SHOW_MAX_WIRES_WARNING = true;
 
