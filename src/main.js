@@ -34,6 +34,7 @@ import {watchDrags, isMiddleClicking, eventPosRelativeTo} from "src/browser/Mous
 import {ObservableValue, ObservableSource} from "src/base/Obs.js"
 import {initExports, obsExportsIsShowing} from "src/ui/exports.js"
 import {initForge, obsForgeIsShowing} from "src/ui/forge.js"
+import {initSimpleForge, obsSimpleForgeIsShowing} from "src/ui/simpleforge.js"
 import {initUndoRedo} from "src/ui/undo.js"
 import {initClear} from "src/ui/clear.js"
 import {initUrlCircuitSync} from "src/ui/url.js"
@@ -285,10 +286,12 @@ let obsIsAnyOverlayShowing = new ObservableSource();
 initUrlCircuitSync(revision);
 initExports(revision, obsIsAnyOverlayShowing.observable());
 initForge(revision, obsIsAnyOverlayShowing.observable());
+initSimpleForge(revision, obsIsAnyOverlayShowing.observable());
 initUndoRedo(revision, obsIsAnyOverlayShowing.observable());
 initClear(revision, obsIsAnyOverlayShowing.observable());
 initTitleSync(revision);
 obsForgeIsShowing.
+    zipLatest(obsSimpleForgeIsShowing, (e1, e2) => e1 || e2).
     zipLatest(obsExportsIsShowing, (e1, e2) => e1 || e2).
     whenDifferent().
     subscribe(e => {
@@ -299,6 +302,12 @@ obsForgeIsShowing.
 // If the webgl initialization is going to fail, don't fail during the module loading phase.
 haveLoaded = true;
 setTimeout(() => {
+    if (Config.SHOW_GATE_FORGE_BUTTON) {
+        document.getElementById('gate-forge-button').style.display = 'inline';
+    }
+    if (Config.SHOW_SIMPLE_GATE_FORGE_BUTTON) {
+        document.getElementById('simple-gate-forge-button').style.display = 'inline';
+    }
     inspectorDiv.style.display = 'block';
     redrawNow();
 

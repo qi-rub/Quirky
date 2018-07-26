@@ -72,9 +72,9 @@ function NOT_DRAWER(args) {
 let xShader = ketShaderPermute('', 'return 1.0-out_id;', 1);
 /** @type {!Gate} */
 HalfTurnGates.X = new GateBuilder().
-    setSerializedIdAndSymbol("X").
-    setTitle("Pauli X Gate").
-    setBlurb("The NOT gate.\nToggles between ON and OFF.").
+    setSerializedIdAndSymbol("NOT").
+    setTitle("NOT Gate").
+    setBlurb("Toggles between ZERO and ONE.").
     setDrawer(NOT_DRAWER).
     setActualEffectToShaderProvider(ctx => xShader.withArgs(...ketArgs(ctx))).
     setKnownEffectToMatrix(Matrix.PAULI_X).

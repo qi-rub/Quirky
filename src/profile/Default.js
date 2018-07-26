@@ -18,6 +18,8 @@ Config.TITLE = 'Quirky';
 Config.LONG_TITLE = 'The Quirky Quantum Simulator';
 Config.LONG_SUBTITLE = '';
 
+Config.SHOW_GATE_FORGE_BUTTON = true;
+Config.SHOW_SIMPLE_GATE_FORGE_BUTTON = false;
 Config.DRAW_HINTS = true;
 Config.SHOW_MAX_WIRES_WARNING = true;
 

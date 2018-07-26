@@ -28,10 +28,10 @@ class MathPainter {
         let e = Math.pow(10, -fractionalDigits);
 
         if (v > 100 - e / 2) {
-            return "ONE";
+            return "100%";
         }
         if (v < e / 2) {
-            return "ZERO";
+            return "0%";
         }
 
         return Math.min(Math.max(v, e), 100 - e).toFixed(fractionalDigits) + "%";

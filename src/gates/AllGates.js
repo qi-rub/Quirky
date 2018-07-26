@@ -332,7 +332,7 @@ if (Config.GATESET == 'default') {
         {
             hint: "Operations",
             gates: [
-                // HalfTurnGates.X,
+                HalfTurnGates.X,
                 MeasurementGate,
                 // undefined,
                 // HalfTurnGates.Z,
