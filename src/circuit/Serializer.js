@@ -217,7 +217,8 @@ let fromJson_Gate_props = json => {
     let symbol = json.name !== undefined ? json.name :
         id.startsWith('~') ? '' :
         id;
-    let name = id.startsWith('~') ? `${symbol || 'Custom'} Gate [${id.substring(1)}]` :
+    // let name = id.startsWith('~') ? `${symbol || 'Custom'} Gate [${id.substring(1)}]` :
+    let name = id.startsWith('~') ? `${symbol || 'Custom'}` :
         symbol !== '' ? symbol :
         id;
     return {id, matrix, circuit, symbol, name, param};

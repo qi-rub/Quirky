@@ -118,6 +118,40 @@ class WidgetPainter {
      * @param {!function():!number} nextY
      * @private
      */
+    static _paintGateTooltip_descOnly(painter, gate, matrix, pad, dispSize, w, pushRect, nextY) {
+        if (matrix === undefined) {
+            return;
+        }
+
+        pushRect(new Rect(0, nextY(), 1, 0), pad*2);
+        let n = matrix.height();
+        let matrixDescRect = new Rect(pad, nextY(), w - pad, dispSize/4*n);
+        if (n <= 4) {
+            let format = gate.stableDuration() < 0.2 ? Format.CONSISTENT : Format.SIMPLIFIED;
+            let matDescs = WidgetPainter.describeGateTransformations(matrix, format);
+            let rowHeight = matrixDescRect.h / n;
+            for (let r = 0; r < n; r++) {
+                pushRect(painter.printParagraph(
+                    matDescs[r],
+                    matrixDescRect.skipTop(r * rowHeight).takeTop(rowHeight),
+                    new Point(0, 0.5),
+                    'black',
+                    12));
+            }
+        }
+    }
+
+    /**
+     * @param {!Painter} painter
+     * @param {!Gate} gate
+     * @param {undefined|!Matrix} matrix
+     * @param {!number} pad
+     * @param {!number} dispSize
+     * @param {!number} w
+     * @param {!function(!Rect, pad:!number=):void} pushRect
+     * @param {!function():!number} nextY
+     * @private
+     */
     static _paintGateTooltip_rotation(painter, gate, matrix, pad, dispSize, w, pushRect, nextY) {
         if (matrix === undefined || matrix.width() !== 2 || !matrix.isUnitary(0.001)) {
             return;
@@ -215,8 +249,9 @@ class WidgetPainter {
             return {maxX, maxY};
         }
 
-        WidgetPainter._paintGateTooltip_matrix(painter, gate, matrix, pad, dispSize, w, pushRect, () => maxY);
-        WidgetPainter._paintGateTooltip_rotation(painter, gate, matrix, pad, dispSize, w, pushRect, () => maxY);
+        // WidgetPainter._paintGateTooltip_matrix(painter, gate, matrix, pad, dispSize, w, pushRect, () => maxY);
+        WidgetPainter._paintGateTooltip_descOnly(painter, gate, matrix, pad, dispSize, w, pushRect, () => maxY);
+        // WidgetPainter._paintGateTooltip_rotation(painter, gate, matrix, pad, dispSize, w, pushRect, () => maxY);
         WidgetPainter._paintGateTooltip_circuit(
             painter, gate.knownCircuitNested, pad, dispSize, w, pushRect, () => maxY, time);
 

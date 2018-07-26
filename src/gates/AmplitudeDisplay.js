@@ -360,12 +360,13 @@ const AMPLITUDE_DRAWER_FROM_CUSTOM_STATS = GatePainting.makeDisplayDrawer(args =
             (c, r, v) => `raw: ${(v.norm2()*100).toFixed(4)}%`, // , log: ${(Math.log10(v.norm2())*10).toFixed(1)} dB`,
             (c, r, v) => '[entangled with other qubits]');
     } else {
+        let formatAmp = (amp) => amp.toString(new Format(false, Config.COMPLEX_ERROR_THRESHOLD, 6, ", "), Config.REAL_AMPLITUDES);
         MathPainter.paintMatrixTooltip(args.painter, matrix, drawRect, args.focusPoints,
-            (c, r) => `Amplitude of |${Util.bin(r*matrix.width() + c, args.gate.height)}⟩`,
-            (c, r, v) => 'val: ' + v.toString(new Format(false, Config.COMPLEX_ERROR_THRESHOLD, 6, ", "), Config.REAL_AMPLITUDES),
+            (c, r) => `Amplitude of |${Util.bin(r*matrix.width() + c, args.gate.height)}⟩:`,
+            (c, r, v) => 'amp: ' + formatAmp(v),
             (c, r, v) => Config.REAL_AMPLITUDES ?
-                `mag²: ${(v.norm2()*100).toFixed(4)}%` :
-                `mag²: ${(v.norm2()*100).toFixed(4)}%, phase: ${forceSign(v.phase() * 180 / Math.PI)}°`);
+                `amp²: ${formatAmp(v)} (${(v.norm2()*100).toFixed(4)}%)` :
+                `|amp|²: ${formatAmp(v)} (${(v.norm2()*100).toFixed(4)}%, phase: ${forceSign(v.phase() * 180 / Math.PI)}°)`);
         if (phaseLockIndex !== undefined && !Config.REAL_AMPLITUDES) {
             let cw = drawRect.w/matrix.width();
             let rh = drawRect.h/matrix.height();

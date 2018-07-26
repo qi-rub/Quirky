@@ -64,7 +64,7 @@ function initSimpleForge(revision, obsIsAnyOverlayShowing) {
             let gate = new GateBuilder().
                 setSerializedId('~' + Math.floor(Math.random()*(1 << 20)).toString(32)).
                 setSymbol('U(' + txtAngleValue + ')').
-                setBlurb('Rotation by an angle of ' + txtAngleValue).
+                //setBlurb('Rotation by an angle of ' + txtAngleValue).
                 setKnownEffectToMatrix(mat).
                 gate;
             createCustomGateAndClose(gate);

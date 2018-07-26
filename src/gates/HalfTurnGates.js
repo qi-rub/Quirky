@@ -73,7 +73,7 @@ let xShader = ketShaderPermute('', 'return 1.0-out_id;', 1);
 /** @type {!Gate} */
 HalfTurnGates.X = new GateBuilder().
     setSerializedIdAndSymbol("NOT").
-    setTitle("NOT Gate").
+    setTitle("NOT").
     setBlurb("Toggles between ZERO and ONE.").
     setDrawer(NOT_DRAWER).
     setActualEffectToShaderProvider(ctx => xShader.withArgs(...ketArgs(ctx))).

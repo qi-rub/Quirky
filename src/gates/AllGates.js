@@ -344,7 +344,7 @@ if (Config.GATESET == 'default') {
             hint: "Diagnostics",
             gates: [
                 // BlochSphereDisplay, undefined,
-                // AmplitudeDisplayFamily.ofSize(1),
+                AmplitudeDisplayFamily.ofSize(1),
                 ProbabilityDisplayFamily.ofSize(1),
             ]
         },
