@@ -60,7 +60,7 @@ class DisplayedToolbox {
          * @type {!CachablePainting}
          * @private
          */
-        this._standardApperance = standardAppearance || new CachablePainting(
+        this._standardAppearance = standardAppearance || new CachablePainting(
             () => ({width: this.desiredWidth(), height: this.desiredHeight()}),
             painter => {
                 painter.ctx.save();
@@ -92,7 +92,7 @@ class DisplayedToolbox {
             this.labelsOnTop,
             this.groupHeight,
             this._originalGroups,
-            this._standardApperance);
+            this._standardAppearance);
     }
 
     /**
@@ -106,6 +106,7 @@ class DisplayedToolbox {
         let dy = Math.floor(gateIndex / 2);
 
         let x = Config.TOOLBOX_MARGIN_X +
+            Config.TOOLBOX_PADDING_X +
             dx * Config.TOOLBOX_GATE_SPAN +
             groupIndex * Config.TOOLBOX_GROUP_SPAN;
         let y = this.top +
@@ -183,7 +184,7 @@ class DisplayedToolbox {
             this.labelsOnTop,
             this.groupHeight,
             this._originalGroups,
-            this._standardApperance);
+            this._standardAppearance);
     }
 
     /**
@@ -201,7 +202,7 @@ class DisplayedToolbox {
      */
     paint(painter, stats, hand) {
         painter.fillRect(this.curArea(painter.canvas.width), Config.BACKGROUND_COLOR_TOOLBOX);
-        this._standardApperance.paint(0, this.top, painter);
+        this._standardAppearance.paint(0, this.top, painter);
         this._paintDeviations(painter, stats, hand);
     }
 
@@ -220,7 +221,7 @@ class DisplayedToolbox {
         painter.ctx.save();
         painter.ctx.translate(x, y);
         painter.ctx.rotate(-Math.PI/2);
-        painter.printLine(this.name, new Rect(-r.h / 2, -r.w / 2, r.h, r.w), 0.5, 'black', 24);
+        painter.printLine(this.name, new Rect(-r.h/2 + 1, -r.w / 2, r.h - 4, r.w), 0.5, 'black', 24);
         painter.ctx.restore();
     }
 

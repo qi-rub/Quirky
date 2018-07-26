@@ -18,10 +18,12 @@ Config.TITLE = 'Quirky';
 Config.LONG_TITLE = 'The Quirky Quantum Simulator';
 Config.LONG_SUBTITLE = '';
 
-Config.SHOW_MENU_FOR_EMPTY_CIRCUIT = false;
+Config.SHOW_MENU_FOR_EMPTY_CIRCUIT = true;
+Config.DRAW_HINTS = true;
+Config.SHOW_MAX_WIRES_WARNING = true;
 
-Config.PROFILE = 'mini'; // default
-Config.REAL_AMPLITUDES = true;
+Config.GATESET = 'Default';
+Config.REAL_AMPLITUDES = false;
 Config.COMPLEX_ERROR_THRESHOLD = 1e-4;
 Config.SINGLE_QUBIT_DISPLAYS = false;
 Config.FINAL_AMPLITUDES = false;
@@ -76,6 +78,7 @@ Config.TOOLBOX_GROUP_SPACING = 24 - Config.TOOLBOX_GATE_SPACING;
 Config.TOOLBOX_GATE_SPAN = Config.GATE_RADIUS * 2 + Config.TOOLBOX_GATE_SPACING;
 Config.TOOLBOX_GROUP_SPAN = Config.TOOLBOX_GATE_SPAN * 2 + Config.TOOLBOX_GROUP_SPACING;
 Config.TOOLBOX_MARGIN_X = 35;
+Config.TOOLBOX_PADDING_X = 10;
 Config.TOOLBOX_MARGIN_Y = 18;
 
 /**

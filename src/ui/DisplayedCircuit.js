@@ -399,7 +399,7 @@ class DisplayedCircuit {
             }).thenStroke('black');
         }
         painter.ctx.restore();
-        if (this._extraWireStartIndex !== undefined && this.circuitDefinition.numWires === Config.MAX_WIRE_COUNT) {
+        if (this._extraWireStartIndex !== undefined && this.circuitDefinition.numWires === Config.MAX_WIRE_COUNT && Config.SHOW_MAX_WIRES_WARNING) {
             painter.print(
                 `(Max wires. Qubit limit is ${Config.MAX_WIRE_COUNT}.)`,
                 5,

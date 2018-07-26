@@ -174,7 +174,7 @@ Gates.findKnownGateById = (id, customGateSet) => {
     return gatesById.has(id) ? gatesById.get(id) : customGateSet.findGateWithSerializedId(id);
 };
 
-if (Config.PROFILE == 'default') {
+if (Config.GATESET == 'default') {
 
     /** @type {!Array<!{hint: !string, gates: !Array<undefined|!Gate>}>} */
     Gates.TopToolboxGroups = [
@@ -325,41 +325,43 @@ if (Config.PROFILE == 'default') {
             ]
         },
     ];
-} else if (Config.PROFILE == 'mini') {
+} else if (Config.GATESET == 'Quest 1') {
 
     /** @type {!Array<!{hint: !string, gates: !Array<undefined|!Gate>}>} */
     Gates.TopToolboxGroups = [
         {
-            hint: "Gates",
+            hint: "Operations",
             gates: [
+                // HalfTurnGates.X,
                 MeasurementGate,
-                undefined,
-                HalfTurnGates.X,
-                HalfTurnGates.Z,
-                HalfTurnGates.H,
-                Controls.Control
+                // undefined,
+                // HalfTurnGates.Z,
+                // HalfTurnGates.H,
+                // Controls.Control
             ]
         },
         {
-            hint: "Displays",
+            hint: "Diagnostics",
             gates: [
-                BlochSphereDisplay, undefined,
-                ProbabilityDisplayFamily.ofSize(2), undefined,
-                AmplitudeDisplayFamily.ofSize(2)
+                // BlochSphereDisplay, undefined,
+                AmplitudeDisplayFamily.ofSize(1),
+                ProbabilityDisplayFamily.ofSize(1),
             ]
         },
-        {
-            hint: "Signals",
-            gates: [
-                ExponentiatingGates.RotateQubit,
-                CountingGates.StepFamily.ofSize(1),
-            ]
-        },
+        // {
+        //     hint: "Signals",
+        //     gates: [
+        //         ExponentiatingGates.RotateQubit,
+        //         CountingGates.StepFamily.ofSize(1),
+        //     ]
+        // },
     ];
 
     /** @type {!Array<!{hint: !string, gates: !Array<undefined|!Gate>}>} */
     Gates.BottomToolboxGroups = [
     ];
+} else {
+    throw('Unknown gate set: ' + Config.GATESET);
 }
 
 export {Gates}

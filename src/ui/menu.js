@@ -251,9 +251,9 @@ function initMenu(revision, obsIsAnyOverlayShowing) {
         const menuOverlay = /** @type {!HTMLDivElement} */ document.getElementById('menu-overlay');
         const menutDiv = /** @type {HTMLDivElement} */ document.getElementById('menu-div');
         const menuSpan = /** @type {HTMLSpanElement} */ document.getElementById('menu-span');
-        if (Config.PROFILE == 'default') {
+        // if (Config.PROFILE == 'default') {
             menuSpan.style.display = 'inline';
-        }
+        // }
         menuButton.addEventListener('click', () => menuIsVisible.set(true));
         obsIsAnyOverlayShowing.subscribe(e => { menuButton.disabled = e; });
         menuOverlay.addEventListener('click', () => menuIsVisible.set(false));

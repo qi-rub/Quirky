@@ -76,14 +76,14 @@ class DisplayedInspector {
      * @returns {!DisplayedInspector}
      */
     static empty(drawArea) {
-        let topToolbox = new DisplayedToolbox('Toolbox', 0, Gates.TopToolboxGroups, true, 3);
+        let topToolbox = new DisplayedToolbox('Toolbox', 0, Gates.TopToolboxGroups, true, 1);
         let displayedCircuit = DisplayedCircuit.empty(topToolbox.desiredHeight());
         let bottomToolbox = new DisplayedToolbox(
             'Toolbox₂',
             displayedCircuit.top + displayedCircuit.desiredHeight(),
             Gates.BottomToolboxGroups,
             false,
-            4);
+            1);
         return new DisplayedInspector(
             drawArea,
             displayedCircuit,
@@ -299,6 +299,9 @@ class DisplayedInspector {
     }
 
     _drawHint(painter) {
+        if (!Config.DRAW_HINTS) {
+            return;
+        }
         this._drawHint_dragGatesOntoCircuit(painter);
         this._drawHint_watchOutputsChange(painter);
         this._drawHint_useControls(painter);
