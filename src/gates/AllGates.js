@@ -346,12 +346,12 @@ if (Config.GATESET == 'default') {
                 // BlochSphereDisplay, undefined,
                 AmplitudeDisplayFamily.ofSize(1),
                 ProbabilityDisplayFamily.ofSize(1),
+                ExponentiatingGates.RotateQubit,
             ]
         },
         // {
         //     hint: "Signals",
         //     gates: [
-        //         ExponentiatingGates.RotateQubit,
         //         CountingGates.StepFamily.ofSize(1),
         //     ]
         // },

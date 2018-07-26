@@ -75,12 +75,12 @@ class DisplayedToolbox {
      */
     withCustomGatesInserted(customGateSet) {
         let groups = [...this._originalGroups];
-        for (let i = 0; i < Math.max(1, customGateSet.gates.length); i += this.groupHeight*2) {
+        for (let i = 0; i < Math.max(1, customGateSet.gates.length); i += this.groupHeight*3) {
             let group = {
                 hint: "Custom Rotations",
                 gates: [undefined, undefined]
             };
-            for (let j = 0; j < this.groupHeight*2 && i + j < customGateSet.gates.length; j++) {
+            for (let j = 0; j < this.groupHeight*3 && i + j < customGateSet.gates.length; j++) {
                 group.gates[j] = customGateSet.gates[i + j];
             }
             groups.push(group);
@@ -102,8 +102,8 @@ class DisplayedToolbox {
      * @private
      */
     gateDrawRect(groupIndex, gateIndex) {
-        let dx = gateIndex % 2;
-        let dy = Math.floor(gateIndex / 2);
+        let dx = gateIndex % 3;
+        let dy = Math.floor(gateIndex / 3);
 
         let x = Config.TOOLBOX_MARGIN_X +
             Config.TOOLBOX_PADDING_X +
@@ -129,12 +129,12 @@ class DisplayedToolbox {
         if (this.labelsOnTop) {
             let r = this.gateDrawRect(groupIndex, 0);
             let c = new Point(r.x + Config.TOOLBOX_GATE_SPAN - Config.TOOLBOX_GATE_SPACING / 2, r.y - 18);
-            return new Rect(c.x - Config.TOOLBOX_GATE_SPAN, c.y, Config.TOOLBOX_GATE_SPAN * 2, 20);
+            return new Rect(c.x - Config.TOOLBOX_GATE_SPAN, c.y, Config.TOOLBOX_GATE_SPAN * 3, 20);
         }
 
-        let r = this.gateDrawRect(groupIndex, this.groupHeight*2 - 2);
+        let r = this.gateDrawRect(groupIndex, this.groupHeight*3 - 2);
         let c = new Point(r.x + Config.TOOLBOX_GATE_SPAN - Config.TOOLBOX_GATE_SPACING / 2, r.bottom());
-        return new Rect(c.x - Config.TOOLBOX_GATE_SPAN, c.y+2, Config.TOOLBOX_GATE_SPAN * 2, 20);
+        return new Rect(c.x - Config.TOOLBOX_GATE_SPAN, c.y+2, Config.TOOLBOX_GATE_SPAN * 3, 20);
     }
 
     /**
