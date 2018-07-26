@@ -17,21 +17,39 @@
  * @throws
  */
 function selectAndCopyToClipboard(element) {
+    // https://github.com/zenorocha/clipboard.js/blob/master/src/clipboard-action.js
+    const isRTL = document.documentElement.getAttribute('dir') == 'rtl';
+
+    let fakeElem = document.createElement('textarea');
+    fakeElem.style.fontSize = '12pt';
+    fakeElem.style.border = '0';
+    fakeElem.style.padding = '0';
+    fakeElem.style.margin = '0';
+    fakeElem.style.position = 'absolute';
+    fakeElem.style[ isRTL ? 'right' : 'left' ] = '-9999px';
+    let yPosition = window.pageYOffset || document.documentElement.scrollTop;
+    fakeElem.style.top = `${yPosition}px`;
+    fakeElem.setAttribute('readonly', '');
+    fakeElem.value = element.innerText;
+    document.body.appendChild(fakeElem);
+
     if (document.selection) {
-        //noinspection XHTMLIncompatabilitiesJS
         let range = document.body.createTextRange();
-        range.moveToElementText(element);
+        range.moveToElementText(fakeElem);
         range.select();
     } else if (window.getSelection) {
         let range = document.createRange();
-        range.selectNodeContents(element);
+        range.selectNode(fakeElem);
         window.getSelection().removeAllRanges();
         window.getSelection().addRange(range);
     }
 
     if (!document.execCommand('copy')) {
+        document.body.removeChild(fakeElem);
         throw new Error("execCommand failed");
     }
+
+    document.body.removeChild(fakeElem);
 }
 
 export {selectAndCopyToClipboard}

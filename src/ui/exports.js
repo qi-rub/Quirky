@@ -118,7 +118,7 @@ function initExports(revision, obsIsAnyOverlayShowing) {
 
         let latest;
         revision.latestActiveCommit().subscribe(jsonText => {
-            downloadButton.innerText = `Download "${fileNameForState(jsonText)}"`;
+            // downloadButton.innerText = `Download "${fileNameForState(jsonText)}"`;
             latest = jsonText;
         });
 

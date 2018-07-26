@@ -301,8 +301,6 @@ haveLoaded = true;
 setTimeout(() => {
     inspectorDiv.style.display = 'block';
     redrawNow();
-    document.getElementById("loading-div").style.display = 'none';
-    document.getElementById("close-menu-button").style.display = 'block';
 
     try {
         initializedWglContext().onContextRestored = () => redrawThrottle.trigger();
