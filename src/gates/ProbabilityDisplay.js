@@ -241,8 +241,8 @@ function shared_chanceGateMaker(builder) {
     return builder.
         setSymbol("Prob").
         setTitle("Probability Display").
-        setBlurb("Shows chances of outcomes if a measurement was performed.\n" +
-            "Use controls to see conditional probabilities.").
+        setBlurb("Shows chances of outcomes if a measurement was performed.").
+        // "\nUse controls to see conditional probabilities."
         promiseHasNoNetEffectOnStateVector().
         setExtraDisableReasonFinder(args => args.isNested ? "can't\nnest\ndisplays\n(sorry)" : undefined);
 }
@@ -265,7 +265,7 @@ function multiChanceGateMaker(span, builder) {
  * @param {!GateBuilder} builder
  * @returns {!GateBuilder}
  */
-function singleChangeGateMaker(builder) {
+function singleChanceGateMaker(builder) {
     return shared_chanceGateMaker(builder).
         setSerializedId("Chance").
         markAsDrawerNeedsSingleQubitDensityStats().
@@ -281,7 +281,7 @@ function singleChangeGateMaker(builder) {
 
 let ProbabilityDisplayFamily = Gate.buildFamily(1, 16, (span, builder) =>
     span === 1 ?
-        singleChangeGateMaker(builder) :
+        singleChanceGateMaker(builder) :
         multiChanceGateMaker(span, builder));
 
 export {

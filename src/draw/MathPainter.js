@@ -28,10 +28,10 @@ class MathPainter {
         let e = Math.pow(10, -fractionalDigits);
 
         if (v > 100 - e / 2) {
-            return "On";
+            return "ONE";
         }
         if (v < e / 2) {
-            return "Off";
+            return "ZERO";
         }
 
         return Math.min(Math.max(v, e), 100 - e).toFixed(fractionalDigits) + "%";
@@ -80,7 +80,7 @@ class MathPainter {
                 painter,
                 drawArea.right(),
                 drawArea.y,
-                'Chance of being ON if measured',
+                'Chance of being ONE if measured: ',
                 (100*probability).toFixed(5) + "%");
         }
     }
