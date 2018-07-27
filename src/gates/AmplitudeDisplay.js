@@ -388,36 +388,24 @@ const AMPLITUDE_DRAWER_FROM_CUSTOM_STATS = GatePainting.makeDisplayDrawer(args =
         }
     }
 
-    if (matrix.hasComplex(Config.COMPLEX_ERROR_THRESHOLD) && Config.REAL_AMPLITUDES) {
-        args.painter.print(
-            'complex amplitudes',
-            args.rect.x+args.rect.w/2,
-            args.rect.y+args.rect.h+12,
-            'center',
-            'hanging',
-            'red',
-            '12px sans-serif',
-            args.rect.w,
-            args.rect.h,
-            undefined);
-    }
+    let isComplexError = matrix.hasComplex(Config.COMPLEX_ERROR_THRESHOLD) && Config.REAL_AMPLITUDES;
 
-    paintErrorIfPresent(args, isIncoherent);
+    paintErrorIfPresent(args, isIncoherent, isComplexError);
 });
 
 /**
  * @param {!GateDrawParams} args
  * @param {!boolean} isIncoherent
  */
-function paintErrorIfPresent(args, isIncoherent) {
+function paintErrorIfPresent(args, isIncoherent, isComplexError) {
     /** @type {undefined|!string} */
     let err = undefined;
     let {col, row} = args.positionInCircuit;
-    let measured = ((args.stats.circuitDefinition.colIsMeasuredMask(col) >> row) & ((1 << args.gate.height) - 1)) !== 0;
+    let anyMeasured = ((args.stats.circuitDefinition.colIsMeasuredMask(col) >> row) & ((1 << args.gate.height) - 1)) !== 0;
+    if (anyMeasured)
+        return; // since the gate will be disabled anyways
     if (isIncoherent) {
-        err = 'incoherent';
-    } else if (measured) {
-        err = args.gate.width <= 2 ? '(w/ measure defer)' : '(assuming measurement deferred)';
+        err = 'entangled';
     }
     if (err !== undefined) {
         args.painter.print(
@@ -432,6 +420,26 @@ function paintErrorIfPresent(args, isIncoherent) {
             args.rect.h,
             undefined);
     }
+    if (isComplexError) {
+        args.painter.print(
+            'complex amplitudes',
+            args.rect.x+args.rect.w/2,
+            args.rect.y+args.rect.h+12,
+            'center',
+            'hanging',
+            'red',
+            '12px sans-serif',
+            args.rect.w,
+            args.rect.h,
+            undefined);
+    }
+}
+
+function disableIfAnyMeasured(args) {
+    let noneMeasured = ((args.measuredMask >> args.outerRow) & ((1 << args.gate.height) - 1)) === 0;
+    if (!noneMeasured)
+        return "may not measure";
+    return undefined;
 }
 
 let AmplitudeDisplayFamily = Gate.buildFamily(1, 16, (span, builder) => builder.
@@ -441,7 +449,7 @@ let AmplitudeDisplayFamily = Gate.buildFamily(1, 16, (span, builder) => builder.
     setBlurb("Shows the amplitudes of some wires, if separable.\nUse controls to see conditional amplitudes.").
     setWidth(span === 1 ? 2 : span % 2 === 0 ? span : Math.ceil(span/2)).
     promiseHasNoNetEffectOnStateVector().
-    setExtraDisableReasonFinder(args => args.isNested ? "can't\nnest\ndisplays\n(sorry)" : undefined).
+    setExtraDisableReasonFinder(args => args.isNested ? "can't\nnest\ndisplays\n(sorry)" : disableIfAnyMeasured(args)).
     setStatTexturesMaker(ctx =>
         amplitudeDisplayStatTextures(ctx.stateTrader.currentTexture, ctx.controls, ctx.row, span)).
     setStatPixelDataPostProcessor((val, def) => processOutputs(span, val, def)).

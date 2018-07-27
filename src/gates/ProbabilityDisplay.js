@@ -98,6 +98,31 @@ function probabilityPixelsToColumnVector(pixels, span) {
     return new Matrix(1, n, buf);
 }
 
+function disableUnlessMeasured(args) {
+    let allMeasured = ((args.measuredMask >> args.outerRow) & ((1 << args.gate.height) - 1)) == ((1 << args.gate.height) - 1);
+    if (!allMeasured)
+        return "must measure first";
+    return undefined;
+}
+
+function paintErrorIfPresent(args) {
+    let {row, col} = args.positionInCircuit;
+    let allMeasured = ((args.stats.circuitDefinition.colIsMeasuredMask(col) >> row) & ((1 << args.gate.height) - 1)) == ((1 << args.gate.height) - 1);
+    if (!allMeasured) {
+        args.painter.print(
+            "not measured",
+            args.rect.x+args.rect.w/2,
+            args.rect.y+args.rect.h,
+            'center',
+            'hanging',
+            'red',
+            '12px sans-serif',
+            args.rect.w,
+            args.rect.h,
+            undefined);
+    }
+}
+
 function _paintMultiProbabilityDisplay_grid(args) {
     let {painter, rect: {x, y, w, h}} = args;
     let n = 1 << args.gate.height;
@@ -118,6 +143,8 @@ function _paintMultiProbabilityDisplay_grid(args) {
         }
     }).thenStroke('lightgray', r <= 0 ? 1 : 1 / r);
     painter.strokeRect(args.rect, 'lightgray');
+
+    // paintErrorIfPresent(args);
 }
 
 function _paintMultiProbabilityDisplay_probabilityBars(args) {
@@ -258,6 +285,7 @@ function multiChanceGateMaker(span, builder) {
         setStatTexturesMaker(ctx =>
             probabilityStatTexture(ctx.stateTrader.currentTexture, ctx.controlsTexture, ctx.row, span)).
         setStatPixelDataPostProcessor(pixels => probabilityPixelsToColumnVector(pixels, span)).
+        setExtraDisableReasonFinder(disableUnlessMeasured).
         setDrawer(GatePainting.makeDisplayDrawer(paintMultiProbabilityDisplay));
 }
 
@@ -269,6 +297,7 @@ function singleChanceGateMaker(builder) {
     return shared_chanceGateMaker(builder).
         setSerializedId("Chance").
         markAsDrawerNeedsSingleQubitDensityStats().
+        setExtraDisableReasonFinder(disableUnlessMeasured).
         setDrawer(GatePainting.makeDisplayDrawer(args => {
             let {row, col} = args.positionInCircuit;
             MathPainter.paintProbabilityBox(
@@ -276,6 +305,7 @@ function singleChanceGateMaker(builder) {
                 args.stats.controlledWireProbabilityJustAfter(row, col),
                 args.rect,
                 args.focusPoints);
+            // paintErrorIfPresent(args);
         }));
 }
 

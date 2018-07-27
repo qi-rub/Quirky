@@ -57,7 +57,7 @@ function _paintSampleDisplay_result(args) {
                 Config.OPERATION_FORE_COLOR);
         }
         painter.print(
-            bit ? 'on' : 'off',
+            bit ? 'ONE' : 'ZERO',
             x+w/2,
             startY+d*(i+0.5),
             'center',
@@ -100,8 +100,9 @@ function paintSampleDisplay(args) {
 let SampleDisplayFamily = Gate.buildFamily(1, 16, (span, builder) => builder.
     setSerializedId("Sample" + span).
     setSymbol("Sample").
-    setTitle("Sampled Results Display").
-    setBlurb("Shows a random sample of possible measurement outcomes.\nUse controls to see conditional samples.").
+    setTitle("Sample Display").
+    setBlurb("Repeatedly run circuit and display (random) measurement outcomes.").
+    // \nUse controls to see conditional samples.").
     setStatTexturesMaker(ctx =>
         probabilityStatTexture(ctx.stateTrader.currentTexture, ctx.controlsTexture, ctx.row, span)).
     setStatPixelDataPostProcessor(e => probabilityPixelsToColumnVector(e, span)).
