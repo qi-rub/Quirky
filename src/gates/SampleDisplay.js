@@ -57,13 +57,13 @@ function _paintSampleDisplay_result(args) {
                 Config.OPERATION_FORE_COLOR);
         }
         painter.print(
-            bit ? 'ONE' : 'ZERO',
+            bit ? '1' : '0',
             x+w/2,
             startY+d*(i+0.5),
             'center',
             'middle',
             'black',
-            '16px sans-serif',
+            '16px monospace',
             w,
             d);
     }
