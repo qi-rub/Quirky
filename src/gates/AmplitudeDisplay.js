@@ -438,7 +438,7 @@ function paintErrorIfPresent(args, isIncoherent, isComplexError) {
 function disableIfAnyMeasured(args) {
     let noneMeasured = ((args.measuredMask >> args.outerRow) & ((1 << args.gate.height) - 1)) === 0;
     if (!noneMeasured)
-        return "may not measure";
+        return "was measured";
     return undefined;
 }
 

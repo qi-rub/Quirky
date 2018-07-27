@@ -333,9 +333,8 @@ if (Config.GATESET == 'default') {
             hint: "Operations",
             gates: [
                 HalfTurnGates.X,
-                ExponentiatingGates.RotateQubit,
                 MeasurementGate,
-                // undefined,
+                ExponentiatingGates.RotateQubit,
                 // HalfTurnGates.Z,
                 // HalfTurnGates.H,
                 // Controls.Control
@@ -344,10 +343,10 @@ if (Config.GATESET == 'default') {
         {
             hint: "Diagnostics",
             gates: [
-                // BlochSphereDisplay, undefined,
-                SampleDisplayFamily.ofSize(1),
-                AmplitudeDisplayFamily.ofSize(1),
                 ProbabilityDisplayFamily.ofSize(1),
+                // BlochSphereDisplay, undefined,
+                // SampleDisplayFamily.ofSize(1),
+                // AmplitudeDisplayFamily.ofSize(1),
             ]
         },
         // {
