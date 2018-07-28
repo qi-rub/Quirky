@@ -48,8 +48,13 @@ function initSimpleForge(revision, obsIsAnyOverlayShowing) {
     }
 
     (() => {
+        const cancelButton = /** @type {!HTMLInputElement} */ document.getElementById('simple-gate-forge-cancel-button');
         const rotationButton = /** @type {!HTMLInputElement} */ document.getElementById('simple-gate-forge-rotation-button');
         const txtAngle = /** @type {!HTMLInputElement} */ document.getElementById('simple-gate-forge-rotation-angle');
+
+        cancelButton.addEventListener('click', () => {
+            simpleForgeIsVisible.set(false);
+        });
 
         rotationButton.addEventListener('click', () => {
             let txtAngleValue, mat;

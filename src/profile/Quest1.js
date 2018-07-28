@@ -15,5 +15,6 @@ Config.MAX_WIRE_COUNT = 1;
 
 Config.GATESET = 'Quest 1';
 Config.BACKGROUND_COLOR_TOOLBOX = '#eee';
+Config.MINIMUM_CANVAS_HEIGHT = 200;
 
 export {Config}

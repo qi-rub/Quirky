@@ -341,7 +341,7 @@ if (Config.GATESET == 'default') {
             ]
         },
         {
-            hint: "Diagnostics",
+            hint: "Displays",
             gates: [
                 ProbabilityDisplayFamily.ofSize(1),
                 // BlochSphereDisplay, undefined,

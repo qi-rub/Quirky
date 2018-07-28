@@ -28,7 +28,8 @@
     "test": "grunt test",
     "test-chrome": "grunt test-chrome",
     "test-firefox": "grunt test-firefox",
-    "test-travis": "grunt test-travis"
+    "test-travis": "grunt test-travis",
+    "take-screenshots": "./take-screenshots"
   },
   "repository": {
     "type": "git",

@@ -90,7 +90,7 @@ ExponentiatingGates.ZBackward = new GateBuilder().
     gate;
 
 ExponentiatingGates.RotateQubit = new GateBuilder().
-    setSerializedIdAndSymbol("Rotate").
+    setSerializedIdAndSymbol("Rotor").
     setTitle("Time-varying Rotation gate").
     setBlurb("Clockwise rotation from |0> to |+>, to |1>, to |->, and back to |0>.").
     setDrawer(GatePainting.makeCycleDrawer(0.5, 1, 2)).
