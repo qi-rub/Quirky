@@ -20,7 +20,8 @@ function selectAndCopyToClipboard(element) {
     // https://github.com/zenorocha/clipboard.js/blob/master/src/clipboard-action.js
     const isRTL = document.documentElement.getAttribute('dir') == 'rtl';
 
-    let fakeElem = document.createElement('textarea');
+    let fakeElem = document.createElement('input');
+    fakeElem.setAttribute('type', 'text')
     fakeElem.style.fontSize = '12pt';
     fakeElem.style.border = '0';
     fakeElem.style.padding = '0';
@@ -29,26 +30,15 @@ function selectAndCopyToClipboard(element) {
     fakeElem.style[ isRTL ? 'right' : 'left' ] = '-9999px';
     let yPosition = window.pageYOffset || document.documentElement.scrollTop;
     fakeElem.style.top = `${yPosition}px`;
-    fakeElem.setAttribute('readonly', '');
-    fakeElem.value = element.innerText;
+    fakeElem.readOnly = true;
+    fakeElem.value = element.text;
     document.body.appendChild(fakeElem);
-
-    if (document.selection) {
-        let range = document.body.createTextRange();
-        range.moveToElementText(fakeElem);
-        range.select();
-    } else if (window.getSelection) {
-        let range = document.createRange();
-        range.selectNode(fakeElem);
-        window.getSelection().removeAllRanges();
-        window.getSelection().addRange(range);
-    }
-
+    fakeElem.select();
+    fakeElem.setSelectionRange(0, fakeElem.value.length);
     if (!document.execCommand('copy')) {
         document.body.removeChild(fakeElem);
         throw new Error("execCommand failed");
     }
-
     document.body.removeChild(fakeElem);
 }
 
