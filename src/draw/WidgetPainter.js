@@ -305,7 +305,7 @@ class WidgetPainter {
             factor.isEqualTo(Complex.I) ? "i" :
             factor.isEqualTo(Complex.I.times(-1)) ? "-i" :
             (factor.real === 0 || factor.imag === 0) && format !== Format.CONSISTENT ? factor.toString(format) :
-            '(' + factor.toString(format) + ')·';
+            Config.REAL_AMPLITUDES ? factor.toString(format, Config.REAL_AMPLITUDES) + ' ' : '(' + factor.toString(format) + ')·';
 
         let bitDesc = Util.bin(bitMask, bitCount);
         return scaleFactorDesc + '|' + bitDesc + '⟩';
