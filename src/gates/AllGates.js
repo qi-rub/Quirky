@@ -356,6 +356,28 @@ if (Config.GATESET == 'default') {
         //     ]
         // },
     ];
+} else if (Config.GATESET == 'Quest 2') {
+
+    /** @type {!Array<!{hint: !string, gates: !Array<undefined|!Gate>}>} */
+    Gates.TopToolboxGroups = [
+        {
+            hint: "Operations",
+            gates: [
+                HalfTurnGates.X,
+                MeasurementGate,
+                ExponentiatingGates.RotateQubit,
+                HalfTurnGates.Z,
+                HalfTurnGates.H,
+                Controls.Control,
+            ]
+        },
+        {
+            hint: "Displays",
+            gates: [
+                ProbabilityDisplayFamily.ofSize(1),
+            ]
+        },
+    ];
 } else {
     throw('Unknown gate set: ' + Config.GATESET);
 }
