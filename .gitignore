@@ -3,3 +3,4 @@ node_modules/*
 out/*
 .eslintrc
 *.git_ignore.js
+src/Config.js
