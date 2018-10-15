@@ -1,13 +1,13 @@
 # The Quirky Quantum Simulator <img src="doc/favicon.ico" alt="Icon" title="Icon" />
 
-Quirky is a fork of Quirk, the toy quantum circuit simulator from **[algassert.com/quirk](http://algassert.com/quirk)**, and very much work in progress.
+Quirky is a fork of **[Quirk](http://algassert.com/quirk)**, the drag & drop quantum circuit simulator by Craig Gidney.
 
-We are simplifying Quirk in the context of developing a quantum computing course for high-school students.
+We have been simplifying Quirk in the context of developing a quantum computing course for high-school students; see **[quantum-quest.nl](https://www.quantum-quest.nl)** for details.
 
 
-# Building
+# How to Build Quirky
 
-```
+```bash
 npm install
 npm run build -- --profile="Quest 1"
 # npm run build-debug -- --profile="Quest 1"
