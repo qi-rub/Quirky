@@ -213,9 +213,9 @@ function _paintMultiProbabilityDisplay_tooltips(args) {
                 painter,
                 x + w,
                 y + k * d,
-                `Chance of |${Util.bin(k, args.gate.height)}⟩ if measured`,
-                'raw: ' + (p * 100).toFixed(4) + "%",
-                'log: ' + (Math.log10(p) * 10).toFixed(1) + " dB");
+                `Chance of outcome |${Util.bin(k, args.gate.height)}⟩ if measured:`,
+                (p * 100).toFixed(4) + "%");
+                // 'log: ' + (Math.log10(p) * 10).toFixed(1) + " dB");
         }
     }
 }
