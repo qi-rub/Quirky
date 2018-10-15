@@ -17,6 +17,7 @@ class Config {}
 Config.TITLE = 'Quirky';
 Config.LONG_TITLE = 'The Quirky Quantum Simulator';
 Config.LONG_SUBTITLE = '';
+Config.QUIRKY_URL = 'https://github.com/amsqi/Quirky';
 
 Config.SHOW_GATE_FORGE_BUTTON = true;
 Config.SHOW_SIMPLE_GATE_FORGE_BUTTON = false;
