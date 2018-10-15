@@ -1,6 +1,6 @@
 # The Quirky Quantum Simulator <img src="doc/favicon.ico" alt="Icon" title="Icon" />
 
-Quirky is a fork of **[Quirk](http://algassert.com/quirk)**, the drag & drop quantum circuit simulator by Craig Gidney.
+Quirky is a fork of **[Quirk](http://algassert.com/quirk)**, the awesome drag & drop quantum circuit simulator by Craig Gidney.
 
 We have been simplifying Quirk in the context of developing a quantum computing course for high-school students; see **[quantum-quest.nl](https://www.quantum-quest.nl)** for details.
 
