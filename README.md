@@ -13,4 +13,4 @@ npm run build -- --profile="Quest 1"
 # npm run build-debug -- --profile="Quest 1"
 ```
 
-Confirm the output works by opening `out/QuirkyQuest1.html` with a web browser.
+Confirm the build succeeded by opening `out/QuirkyQuest1.html` with a web browser.
