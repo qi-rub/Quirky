@@ -81,6 +81,7 @@ Config.TOOLBOX_GROUP_SPAN = Config.TOOLBOX_GATE_SPAN * 3 + Config.TOOLBOX_GROUP_
 Config.TOOLBOX_MARGIN_X = 35;
 Config.TOOLBOX_PADDING_X = 10;
 Config.TOOLBOX_MARGIN_Y = 18;
+Config.TOOLBOX_ROWS = 2;
 
 /**
  * Some tooltips end up looking terrible without available vertical space.

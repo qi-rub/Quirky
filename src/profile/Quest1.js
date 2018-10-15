@@ -15,6 +15,7 @@ Config.MAX_WIRE_COUNT = 1;
 Config.REAL_AMPLITUDES = true;
 
 Config.BACKGROUND_COLOR_TOOLBOX = '#eee';
+Config.TOOLBOX_ROWS = 1;
 Config.MINIMUM_CANVAS_HEIGHT = 200;
 
 export {Config}
