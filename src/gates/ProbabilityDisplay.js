@@ -268,7 +268,7 @@ function shared_chanceGateMaker(builder) {
     return builder.
         setSymbol("Prob").
         setTitle("Probability Display").
-        setBlurb("Shows chances of outcomes if a measurement was performed.").
+        setBlurb("Shows probabilities of outcomes if a measurement was performed.").
         // "\nUse controls to see conditional probabilities."
         promiseHasNoNetEffectOnStateVector().
         setExtraDisableReasonFinder(args => args.isNested ? "can't\nnest\ndisplays\n(sorry)" : undefined);

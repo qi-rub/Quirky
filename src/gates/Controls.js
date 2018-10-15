@@ -23,7 +23,7 @@ let Controls = {};
 Controls.Control = new GateBuilder().
     setSerializedIdAndSymbol("•").
     setTitle("Control").
-    setBlurb("Conditions on a qubit being ON.\nGates in the same column only apply to states meeting the condition.").
+    setBlurb("Conditions on a qubit being ONE.\n\nGates in the same column only apply to states meeting the condition.").
     promiseHasNoNetEffectOnStateVector().
     markAsControlExpecting(true).
     setDrawer(args => {

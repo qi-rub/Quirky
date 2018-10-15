@@ -47,7 +47,7 @@ class WidgetPainter {
                         return "doesn't affect " + inputDescription;
                     }
                 } else if (Seq.range(n).every(r => r === c || col[r].isEqualTo(0))) {
-                    return "phases " + inputDescription + " by " + col[c].toString(format);
+                    return "multiplies " + inputDescription + " by " + col[c].toString(format);
                 }
                 let outputDescription = new Seq(col).
                     mapWithIndex((e, c) => WidgetPainter.describeKet(b, c, e, format)).
