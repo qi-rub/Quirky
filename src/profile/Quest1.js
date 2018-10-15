@@ -9,11 +9,11 @@ Config.SHOW_SIMPLE_GATE_FORGE_BUTTON = true;
 Config.DRAW_HINTS = false;
 Config.SHOW_MAX_WIRES_WARNING = false;
 
-Config.REAL_AMPLITUDES = true;
+Config.GATESET = 'Quest 1';
 Config.MIN_WIRE_COUNT = 1;
 Config.MAX_WIRE_COUNT = 1;
+Config.REAL_AMPLITUDES = true;
 
-Config.GATESET = 'Quest 1';
 Config.BACKGROUND_COLOR_TOOLBOX = '#eee';
 Config.MINIMUM_CANVAS_HEIGHT = 200;
 
