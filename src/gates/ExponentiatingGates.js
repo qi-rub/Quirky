@@ -98,6 +98,17 @@ ExponentiatingGates.RotateQubit = new GateBuilder().
     promiseEffectIsUnitary().
     gate;
 
+ExponentiatingGates.MysteryQubitRotation = new GateBuilder().
+    setSerializedIdAndSymbol("Mystery").
+    setTitle("A mysterious gate").
+    setBlurb("Can you find out what it does?").
+    setDrawer(GatePainting.MAKE_HIGHLIGHTED_DRAWER('yellow', 'yellow')).
+    // setActualEffectToShaderProvider(ctx => zShader.withArgs(...ketArgs(ctx))).
+    setKnownEffectToMatrix(YExp(1 / 18.)).
+    promiseEffectIsUnitary().
+    gate;
+
+
 ExponentiatingGates.all = [
     ExponentiatingGates.XBackward,
     ExponentiatingGates.YBackward,
@@ -105,7 +116,8 @@ ExponentiatingGates.all = [
     ExponentiatingGates.XForward,
     ExponentiatingGates.YForward,
     ExponentiatingGates.ZForward,
-    ExponentiatingGates.RotateQubit
+    ExponentiatingGates.RotateQubit,
+    ExponentiatingGates.MysteryQubitRotation
 ];
 
 export {ExponentiatingGates}

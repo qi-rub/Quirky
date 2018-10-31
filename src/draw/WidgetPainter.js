@@ -245,15 +245,14 @@ class WidgetPainter {
         }
 
         let matrix = gate.knownMatrixAt(time);
-        if (gate.definitelyHasNoEffect()) {
+        if (gate.definitelyHasNoEffect() || gate.symbol == "Mystery") {
             return {maxX, maxY};
         }
 
         // WidgetPainter._paintGateTooltip_matrix(painter, gate, matrix, pad, dispSize, w, pushRect, () => maxY);
         WidgetPainter._paintGateTooltip_descOnly(painter, gate, matrix, pad, dispSize, w, pushRect, () => maxY);
         // WidgetPainter._paintGateTooltip_rotation(painter, gate, matrix, pad, dispSize, w, pushRect, () => maxY);
-        WidgetPainter._paintGateTooltip_circuit(
-            painter, gate.knownCircuitNested, pad, dispSize, w, pushRect, () => maxY, time);
+        WidgetPainter._paintGateTooltip_circuit(painter, gate.knownCircuitNested, pad, dispSize, w, pushRect, () => maxY, time);
 
         return {maxX, maxY};
     }

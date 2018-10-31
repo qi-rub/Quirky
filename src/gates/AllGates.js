@@ -334,7 +334,8 @@ if (Config.GATESET == 'default') {
             gates: [
                 HalfTurnGates.X,
                 MeasurementGate,
-                ExponentiatingGates.RotateQubit,
+                ExponentiatingGates.MysteryQubitRotation,
+                // ExponentiatingGates.RotateQubit,
                 // HalfTurnGates.Z,
                 // HalfTurnGates.H,
                 // Controls.Control
@@ -365,7 +366,8 @@ if (Config.GATESET == 'default') {
             gates: [
                 HalfTurnGates.X,
                 MeasurementGate,
-                ExponentiatingGates.RotateQubit,
+                undefined,
+                // ExponentiatingGates.RotateQubit,
                 HalfTurnGates.Z,
                 HalfTurnGates.H,
                 Controls.Control,
