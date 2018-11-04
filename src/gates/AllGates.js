@@ -366,11 +366,11 @@ if (Config.GATESET == 'default') {
             gates: [
                 HalfTurnGates.X,
                 MeasurementGate,
-                undefined,
+                Controls.Control,
                 // ExponentiatingGates.RotateQubit,
                 HalfTurnGates.Z,
                 HalfTurnGates.H,
-                Controls.Control,
+                undefined,
             ]
         },
         {
