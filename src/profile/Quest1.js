@@ -18,5 +18,6 @@ Config.REAL_AMPLITUDES = true;
 Config.BACKGROUND_COLOR_TOOLBOX = '#eee';
 Config.TOOLBOX_ROWS = 1;
 Config.MINIMUM_CANVAS_HEIGHT = 200;
+Config.CIRCUIT_OP_LEFT_SPACING = 35;
 
 export {Config}

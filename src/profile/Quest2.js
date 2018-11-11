@@ -8,5 +8,6 @@ Config.GATESET = 'Quest 2';
 Config.MIN_WIRE_COUNT = 2;
 Config.MAX_WIRE_COUNT = 2;
 Config.TOOLBOX_ROWS = 2;
+Config.CIRCUIT_OP_LEFT_SPACING = 120;
 
 export {Config}

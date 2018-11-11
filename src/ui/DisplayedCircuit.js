@@ -34,7 +34,6 @@ import {paintBlochSphereDisplay} from "src/gates/BlochSphereDisplay.js"
 /** @type {!number} */
 let CIRCUIT_OP_HORIZONTAL_SPACING = 10;
 /** @type {!number} */
-let CIRCUIT_OP_LEFT_SPACING = 35;
 
 const SUPERPOSITION_GRID_LABEL_SPAN = 50;
 
@@ -131,7 +130,7 @@ class DisplayedCircuit {
      */
     desiredWidth(forTooltip=false) {
         if (forTooltip) {
-            return this.opRect(this.circuitDefinition.columns.length - 1).right() + CIRCUIT_OP_LEFT_SPACING;
+            return this.opRect(this.circuitDefinition.columns.length - 1).right() + Config.CIRCUIT_OP_LEFT_SPACING;
         }
         return this._rectForSuperpositionDisplay().right() + 101;
     }
@@ -163,7 +162,7 @@ class DisplayedCircuit {
      */
     toColumnSpaceCoordinate(x) {
         let spacing = (CIRCUIT_OP_HORIZONTAL_SPACING + Config.GATE_RADIUS * 2);
-        let left = CIRCUIT_OP_LEFT_SPACING - CIRCUIT_OP_HORIZONTAL_SPACING / 2;
+        let left = Config.CIRCUIT_OP_LEFT_SPACING - CIRCUIT_OP_HORIZONTAL_SPACING / 2;
         return (x - left) / spacing - 0.5;
     }
 
@@ -278,7 +277,7 @@ class DisplayedCircuit {
             tweak = opSeparation;
         }
 
-        let dx = opSeparation * operationIndex - tweak + CIRCUIT_OP_LEFT_SPACING;
+        let dx = opSeparation * operationIndex - tweak + Config.CIRCUIT_OP_LEFT_SPACING;
         return new Rect(dx, this.top, opWidth, this.desiredHeight());
     }
 
@@ -364,14 +363,20 @@ class DisplayedCircuit {
 
         // Initial value labels
         if (showLabels) {
+            // if (this.circuitDefinition.numWires > 1) {
+            //     let y = this.wireRect(0).y;
+            //     let h = this.wireRect(drawnWireCount - 1).bottom() - y;
+            //     painter.fillRect(new Rect(0, y, Config.CIRCUIT_OP_LEFT_SPACING - 50, h), Config.BACKGROUND_COLOR_TOOLBOX);
+            // }
             for (let row = 0; row < drawnWireCount; row++) {
                 let wireRect = this.wireRect(row);
                 let y = wireRect.center().y;
-                painter.print('|0⟩', 20, y, 'right', 'middle', 'black', '14px sans-serif', 20, Config.WIRE_SPACING);
+                painter.print('|0⟩', Config.CIRCUIT_OP_LEFT_SPACING - 15, y, 'right', 'middle', 'black', '14px sans-serif', 20, Config.WIRE_SPACING);
 
                 if (this.circuitDefinition.numWires > 1) {
-                    let no = this.circuitDefinition.numWires - row;
-                    painter.print('qubit ' + no, painter.canvas.width - 5, y, 'right', 'bottom', 'black', '14px sans-serif', 100, Config.WIRE_SPACING);
+                    let number = this.circuitDefinition.numWires - row;
+                    // painter.fillRect(new Rect(0, y - 10, Config.CIRCUIT_OP_LEFT_SPACING - 50, 20), Config.BACKGROUND_COLOR_TOOLBOX);
+                    painter.print('Qubit ' + number + ':', 5, y, 'left', 'middle', 'black', 'bold 14px sans-serif', 100, Config.WIRE_SPACING);
                 }
             }
         }
@@ -385,7 +390,7 @@ class DisplayedCircuit {
             painter.trace(trace => {
                 let wireRect = this.wireRect(row);
                 let y = Math.round(wireRect.center().y - 0.5) + 0.5;
-                let lastX = showLabels ? 25 : 5;
+                let lastX = showLabels ? (Config.CIRCUIT_OP_LEFT_SPACING - 10) : 5;
                 //noinspection ForLoopThatDoesntUseLoopVariableJS
                 for (let col = 0;
                         showLabels ? lastX < painter.canvas.width : col <= this.circuitDefinition.columns.length;

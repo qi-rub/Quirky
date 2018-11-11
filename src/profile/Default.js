@@ -41,6 +41,8 @@ Config.MIN_WIRE_COUNT = 2;
 Config.MIN_COL_COUNT = 5;
 Config.URL_CIRCUIT_PARAM_KEY = 'circuit';
 
+Config.CIRCUIT_OP_LEFT_SPACING = 120;
+
 // Gate background colors.
 Config.GATE_FILL_COLOR = 'white';
 Config.HIGHLIGHTED_GATE_FILL_COLOR = '#FB7';
