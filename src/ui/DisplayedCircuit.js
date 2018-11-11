@@ -368,6 +368,11 @@ class DisplayedCircuit {
                 let wireRect = this.wireRect(row);
                 let y = wireRect.center().y;
                 painter.print('|0⟩', 20, y, 'right', 'middle', 'black', '14px sans-serif', 20, Config.WIRE_SPACING);
+
+                if (this.circuitDefinition.numWires > 1) {
+                    let no = this.circuitDefinition.numWires - row;
+                    painter.print('qubit ' + no, painter.canvas.width - 5, y, 'right', 'bottom', 'black', '14px sans-serif', 100, Config.WIRE_SPACING);
+                }
             }
         }
 
