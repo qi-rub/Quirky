@@ -4,7 +4,8 @@ Config.TITLE = 'Quirky Quest 3';
 Config.LONG_TITLE = 'The Quirky Quantum Simulator';
 Config.LONG_SUBTITLE = 'Quest 3: Quantum composer';
 
-Config.MIN_WIRE_COUNT = 3;
-Config.MAX_WIRE_COUNT = 3;
+Config.GATESET = 'Quest 3';
+Config.MIN_WIRE_COUNT = 1;
+Config.MAX_WIRE_COUNT = 10;
 
 export {Config}
