@@ -245,7 +245,7 @@ class WidgetPainter {
         }
 
         let matrix = gate.knownMatrixAt(time);
-        if (gate.definitelyHasNoEffect() || gate.symbol == "Mystery") {
+        if (gate.definitelyHasNoEffect() || gate.symbol == "Mystery" || gate.symbol == "Chip") {
             return {maxX, maxY};
         }
 

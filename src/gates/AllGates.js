@@ -36,6 +36,7 @@ import {ModularMultiplicationGates} from "src/gates/ModularMultiplicationGates.j
 import {ModularMultiplyAccumulateGates} from "src/gates/ModularMultiplyAccumulateGates.js"
 import {MultiplicationGates} from "src/gates/MultiplicationGates.js"
 import {MultiplyAccumulateGates} from "src/gates/MultiplyAccumulateGates.js"
+import {MysteryGates} from "src/gates/MysteryGates.js"
 import {NeGate} from "src/gates/Joke_NeGate.js"
 import {ParametrizedRotationGates} from "src/gates/ParametrizedRotationGates.js"
 import {PhaseGradientGates} from "src/gates/PhaseGradientGates.js"
@@ -99,6 +100,7 @@ Gates.ModularMultiplicationGates = ModularMultiplicationGates;
 Gates.ModularMultiplyAccumulateGates = ModularMultiplyAccumulateGates;
 Gates.MultiplicationGates = MultiplicationGates;
 Gates.MultiplyAccumulateGates = MultiplyAccumulateGates;
+Gates.MysteryGates = MysteryGates;
 Gates.NeGate = NeGate;
 Gates.OtherX = VariousXGates;
 Gates.OtherY = VariousYGates;
@@ -151,6 +153,7 @@ Gates.KnownToSerializer = [
     ...ModularMultiplyAccumulateGates.all,
     ...MultiplicationGates.all,
     ...MultiplyAccumulateGates.all,
+    ...MysteryGates.all,
     ...QuarterTurnGates.all,
     ...ParametrizedRotationGates.all,
     ...PhaseGradientGates.all,
@@ -400,6 +403,37 @@ if (Config.GATESET == 'default') {
             hint: "Displays",
             gates: [
                 ProbabilityDisplayFamily.ofSize(1),
+            ]
+        },
+    ];
+} else if (Config.GATESET == 'Quest 4') {
+
+    /** @type {!Array<!{hint: !string, gates: !Array<undefined|!Gate>}>} */
+    Gates.TopToolboxGroups = [
+        {
+            hint: "Operations",
+            gates: [
+                HalfTurnGates.X,
+                MeasurementGate,
+                Controls.Control,
+                // ExponentiatingGates.RotateQubit,
+                HalfTurnGates.Z,
+                HalfTurnGates.H,
+                undefined,
+            ]
+        },
+        {
+            hint: "Displays",
+            gates: [
+                ProbabilityDisplayFamily.ofSize(1),
+            ]
+        },
+        {
+            hint: "Oracles",
+            gates: [
+                MysteryGates.DatabaseChip,
+                undefined,
+                undefined,
             ]
         },
     ];
