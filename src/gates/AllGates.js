@@ -432,7 +432,7 @@ if (Config.GATESET == 'default') {
             hint: "Oracles",
             gates: [
                 MysteryGates.DatabaseChip,
-                undefined,
+                MysteryGates.DeutschJoszaOracle,
                 undefined,
             ]
         },
