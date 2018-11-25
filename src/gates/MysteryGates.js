@@ -31,10 +31,10 @@ MysteryGates.BernsteinVaziraniOracle = new GateBuilder().
     setSerializedId("OracleBV").
     setSymbol("Oracle").
     setTitle("An Oracle for the Bernstein-Vazirani Algorithm").
-    setBlurb("Can you determine the hidden subset?").
+    setBlurb("Can you determine the hidden bitstring?").
     setDrawer(GatePainting.MAKE_HIGHLIGHTED_DRAWER('orange', 'orange')).
     setHeight(4).
-    // the subset is {1,2,4} of {1,2,3,4}, corresponding to |1101> -- note that Quirky is using a different notation than we are
+    // the hidden bitstring is [1101] -- note that Quirky is using a different notation (LSB first)
     setKnownEffectToPhaser(k =>
       ((k&1) == 0 ? 0 : 0.5) +
       ((k&4) == 0 ? 0 : 0.5) +
