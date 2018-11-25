@@ -4,7 +4,7 @@ import {Matrix} from "src/math/Matrix.js"
 
 let MysteryGates = {};
 
-// FIXME: do not forget to exclude IDs in paintGateTooltipHelper() to avoid spoilers
+// XXX: do not forget to exclude IDs in paintGateTooltipHelper() in src/draw/WidgetPainter.js to avoid spoilers
 
 MysteryGates.DatabaseChip = new GateBuilder().
     setSerializedIdAndSymbol("Chip").
@@ -43,10 +43,21 @@ MysteryGates.BernsteinVaziraniOracle = new GateBuilder().
     promiseEffectIsUnitary().
     gate;
 
+MysteryGates.LotteryOracle = new GateBuilder().
+    setSerializedIdAndSymbol("Lottery").
+    setTitle("An Oracle for the Quantum Lottery").
+    setBlurb("Can you determine who is the winner?").
+    setDrawer(GatePainting.MAKE_HIGHLIGHTED_DRAWER('aqua', 'aqua')).
+    setHeight(2).
+    setKnownEffectToPhaser(idx => (idx == 3) ? 0.5 : 0).
+    promiseEffectIsUnitary().
+    gate;
+
 MysteryGates.all = [
   MysteryGates.DatabaseChip,
   MysteryGates.DeutschJoszaOracle,
   MysteryGates.BernsteinVaziraniOracle,
+  MysteryGates.LotteryOracle,
 ];
 
 export {MysteryGates}
