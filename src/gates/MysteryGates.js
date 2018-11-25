@@ -11,7 +11,6 @@ MysteryGates.DatabaseChip = new GateBuilder().
     setTitle("Hila and Iman's Database Chip").
     setBlurb("Can you determine if they have the same blood type?").
     setDrawer(GatePainting.MAKE_HIGHLIGHTED_DRAWER('pink', 'pink')).
-    // setActualEffectToShaderProvider(ctx => zShader.withArgs(...ketArgs(ctx))).
     setKnownEffectToMatrix(new Matrix(2, 2, new Float32Array([-1,0, 0,0, 0,0, 1,0]))).
     promiseEffectIsUnitary().
     gate;
@@ -23,25 +22,31 @@ MysteryGates.DeutschJoszaOracle = new GateBuilder().
     setTitle("An Oracle for the Deutsch-Josza Algorithm").
     setBlurb("Can you determine if the function is constant or balanced?").
     setDrawer(GatePainting.MAKE_HIGHLIGHTED_DRAWER('yellow', 'yellow')).
-    // setActualEffectToShaderProvider(ctx => zShader.withArgs(...ketArgs(ctx))).
     setHeight(3).
-    setKnownEffectToMatrix(new Matrix(8, 8, new Float32Array(
-        [-1,0,  0,0,  0,0,  0,0,  0,0,  0,0,  0,0,  0,0,
-          0,0,  1,0,  0,0,  0,0,  0,0,  0,0,  0,0,  0,0,
-          0,0,  0,0, -1,0,  0,0,  0,0,  0,0,  0,0,  0,0,
-          0,0,  0,0,  0,0,  1,0,  0,0,  0,0,  0,0,  0,0,
-          0,0,  0,0,  0,0,  0,0,  1,0,  0,0,  0,0,  0,0,
-          0,0,  0,0,  0,0,  0,0,  0,0,  1,0,  0,0,  0,0,
-          0,0,  0,0,  0,0,  0,0,  0,0,  0,0, -1,0,  0,0,
-          0,0,  0,0,  0,0,  0,0,  0,0,  0,0,  0,0, -1,0,
-        ]))).
+    setKnownEffectToPhaser(idx => (idx == 0 || idx == 2 || idx == 6 || idx == 7) ? 0.5 : 0).
     promiseEffectIsUnitary().
     gate;
 
+MysteryGates.BernsteinVaziraniOracle = new GateBuilder().
+    setSerializedId("OracleBV").
+    setSymbol("Oracle").
+    setTitle("An Oracle for the Bernstein-Vazirani Algorithm").
+    setBlurb("Can you determine the hidden subset?").
+    setDrawer(GatePainting.MAKE_HIGHLIGHTED_DRAWER('orange', 'orange')).
+    setHeight(4).
+    // the subset is {1,2,4} of {1,2,3,4}, corresponding to |1101> -- note that Quirky is using a different notation than we are
+    setKnownEffectToPhaser(k =>
+      ((k&1) == 0 ? 0 : 0.5) +
+      ((k&4) == 0 ? 0 : 0.5) +
+      ((k&8) == 0 ? 0 : 0.5)
+      ).
+    promiseEffectIsUnitary().
+    gate;
 
 MysteryGates.all = [
   MysteryGates.DatabaseChip,
   MysteryGates.DeutschJoszaOracle,
+  MysteryGates.BernsteinVaziraniOracle,
 ];
 
 export {MysteryGates}

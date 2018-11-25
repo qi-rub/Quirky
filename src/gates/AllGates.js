@@ -433,7 +433,7 @@ if (Config.GATESET == 'default') {
             gates: [
                 MysteryGates.DatabaseChip,
                 MysteryGates.DeutschJoszaOracle,
-                undefined,
+                MysteryGates.BernsteinVaziraniOracle,
             ]
         },
     ];
