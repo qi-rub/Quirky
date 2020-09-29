@@ -12,53 +12,53 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import {Config} from "src/Config.js"
-import {ArithmeticGates} from "src/gates/ArithmeticGates.js"
-import {AmplitudeDisplayFamily} from "src/gates/AmplitudeDisplay.js"
-import {BitCountGates} from "src/gates/BitCountGates.js"
-import {BlochSphereDisplay} from "src/gates/BlochSphereDisplay.js"
-import {ComparisonGates} from "src/gates/ComparisonGates.js"
-import {Controls} from "src/gates/Controls.js"
-import {CountingGates} from "src/gates/CountingGates.js"
-import {CycleBitsGates} from "src/gates/CycleBitsGates.js"
-import {DensityMatrixDisplayFamily} from "src/gates/DensityMatrixDisplay.js"
-import {ErrorInjectionGate} from "src/gates/Debug_ErrorInjectionGate.js"
-import {ExponentiatingGates} from "src/gates/ExponentiatingGates.js"
-import {FourierTransformGates} from "src/gates/FourierTransformGates.js"
-import {HalfTurnGates} from "src/gates/HalfTurnGates.js"
-import {IncrementGates} from "src/gates/IncrementGates.js"
-import {InputGates} from "src/gates/InputGates.js"
-import {InterleaveBitsGates} from "src/gates/InterleaveBitsGates.js"
-import {MeasurementGate} from "src/gates/MeasurementGate.js"
-import {ModularIncrementGates} from "src/gates/ModularIncrementGates.js"
-import {ModularAdditionGates} from "src/gates/ModularAdditionGates.js"
-import {ModularMultiplicationGates} from "src/gates/ModularMultiplicationGates.js"
-import {ModularMultiplyAccumulateGates} from "src/gates/ModularMultiplyAccumulateGates.js"
-import {MultiplicationGates} from "src/gates/MultiplicationGates.js"
-import {MultiplyAccumulateGates} from "src/gates/MultiplyAccumulateGates.js"
-import {MysteryGates} from "src/gates/MysteryGates.js"
-import {NeGate} from "src/gates/Joke_NeGate.js"
-import {ParametrizedRotationGates} from "src/gates/ParametrizedRotationGates.js"
-import {PhaseGradientGates} from "src/gates/PhaseGradientGates.js"
-import {PivotFlipGates} from "src/gates/PivotFlipGates.js"
-import {PostSelectionGates} from "src/gates/PostSelectionGates.js"
-import {PoweringGates} from "src/gates/PoweringGates.js"
-import {ProbabilityDisplayFamily} from "src/gates/ProbabilityDisplay.js"
-import {QuarterTurnGates} from "src/gates/QuarterTurnGates.js"
-import {ReverseBitsGateFamily} from "src/gates/ReverseBitsGate.js"
-import {SampleDisplayFamily} from "src/gates/SampleDisplay.js"
-import {Detector} from "src/gates/Detector.js"
-import {SpacerGate} from "src/gates/SpacerGate.js"
-import {SwapGateHalf} from "src/gates/SwapGateHalf.js"
-import {UniversalNotGate} from "src/gates/Impossible_UniversalNotGate.js"
-import {VariousXGates} from "src/gates/VariousXGates.js"
-import {VariousYGates} from "src/gates/VariousYGates.js"
-import {VariousZGates} from "src/gates/VariousZGates.js"
-import {XorGates} from "src/gates/XorGates.js"
-import {ZeroGate} from "src/gates/Joke_ZeroGate.js"
-import {MysteryGateMaker} from "src/gates/Joke_MysteryGate.js"
+import { Config } from "src/Config.js"
+import { ArithmeticGates } from "src/gates/ArithmeticGates.js"
+import { AmplitudeDisplayFamily } from "src/gates/AmplitudeDisplay.js"
+import { BitCountGates } from "src/gates/BitCountGates.js"
+import { BlochSphereDisplay } from "src/gates/BlochSphereDisplay.js"
+import { ComparisonGates } from "src/gates/ComparisonGates.js"
+import { Controls } from "src/gates/Controls.js"
+import { CountingGates } from "src/gates/CountingGates.js"
+import { CycleBitsGates } from "src/gates/CycleBitsGates.js"
+import { DensityMatrixDisplayFamily } from "src/gates/DensityMatrixDisplay.js"
+import { ErrorInjectionGate } from "src/gates/Debug_ErrorInjectionGate.js"
+import { ExponentiatingGates } from "src/gates/ExponentiatingGates.js"
+import { FourierTransformGates } from "src/gates/FourierTransformGates.js"
+import { HalfTurnGates } from "src/gates/HalfTurnGates.js"
+import { IncrementGates } from "src/gates/IncrementGates.js"
+import { InputGates } from "src/gates/InputGates.js"
+import { InterleaveBitsGates } from "src/gates/InterleaveBitsGates.js"
+import { MeasurementGate } from "src/gates/MeasurementGate.js"
+import { ModularIncrementGates } from "src/gates/ModularIncrementGates.js"
+import { ModularAdditionGates } from "src/gates/ModularAdditionGates.js"
+import { ModularMultiplicationGates } from "src/gates/ModularMultiplicationGates.js"
+import { ModularMultiplyAccumulateGates } from "src/gates/ModularMultiplyAccumulateGates.js"
+import { MultiplicationGates } from "src/gates/MultiplicationGates.js"
+import { MultiplyAccumulateGates } from "src/gates/MultiplyAccumulateGates.js"
+import { MysteryGates } from "src/gates/MysteryGates.js"
+import { NeGate } from "src/gates/Joke_NeGate.js"
+import { ParametrizedRotationGates } from "src/gates/ParametrizedRotationGates.js"
+import { PhaseGradientGates } from "src/gates/PhaseGradientGates.js"
+import { PivotFlipGates } from "src/gates/PivotFlipGates.js"
+import { PostSelectionGates } from "src/gates/PostSelectionGates.js"
+import { PoweringGates } from "src/gates/PoweringGates.js"
+import { ProbabilityDisplayFamily } from "src/gates/ProbabilityDisplay.js"
+import { QuarterTurnGates } from "src/gates/QuarterTurnGates.js"
+import { ReverseBitsGateFamily } from "src/gates/ReverseBitsGate.js"
+import { SampleDisplayFamily } from "src/gates/SampleDisplay.js"
+import { Detector } from "src/gates/Detector.js"
+import { SpacerGate } from "src/gates/SpacerGate.js"
+import { SwapGateHalf } from "src/gates/SwapGateHalf.js"
+import { UniversalNotGate } from "src/gates/Impossible_UniversalNotGate.js"
+import { VariousXGates } from "src/gates/VariousXGates.js"
+import { VariousYGates } from "src/gates/VariousYGates.js"
+import { VariousZGates } from "src/gates/VariousZGates.js"
+import { XorGates } from "src/gates/XorGates.js"
+import { ZeroGate } from "src/gates/Joke_ZeroGate.js"
+import { MysteryGateMaker } from "src/gates/Joke_MysteryGate.js"
 
-import {seq} from "src/base/Seq.js"
+import { seq } from "src/base/Seq.js"
 
 let Gates = {};
 
@@ -177,24 +177,24 @@ Gates.findKnownGateById = (id, customGateSet) => {
     return gatesById.has(id) ? gatesById.get(id) : customGateSet.findGateWithSerializedId(id);
 };
 
-if (Config.GATESET == 'default') {
+if (Config.GATESET == 'Default') {
 
     /** @type {!Array<!{hint: !string, gates: !Array<undefined|!Gate>}>} */
     Gates.TopToolboxGroups = [
         {
             hint: "Probes",
             gates: [
-                MeasurementGate,                  undefined,
+                MeasurementGate, undefined,
                 PostSelectionGates.PostSelectOff, PostSelectionGates.PostSelectOn,
-                Controls.AntiControl,             Controls.Control
+                Controls.AntiControl, Controls.Control
             ]
         },
         {
             hint: "Displays",
             gates: [
-                SampleDisplayFamily.ofSize(3),        undefined,
+                SampleDisplayFamily.ofSize(3), undefined,
                 DensityMatrixDisplayFamily.ofSize(1), BlochSphereDisplay,
-                ProbabilityDisplayFamily.ofSize(1),   AmplitudeDisplayFamily.ofSize(2)
+                ProbabilityDisplayFamily.ofSize(1), AmplitudeDisplayFamily.ofSize(2)
             ]
         },
         {
@@ -224,9 +224,9 @@ if (Config.GATESET == 'default') {
         {
             hint: "Sixteenths",
             gates: [
-                VariousZGates.Z8,  VariousZGates.Z8i,
-                VariousYGates.Y8,  VariousYGates.Y8i,
-                VariousXGates.X8,  VariousXGates.X8i,
+                VariousZGates.Z8, VariousZGates.Z8i,
+                VariousYGates.Y8, VariousYGates.Y8i,
+                VariousXGates.X8, VariousXGates.X8i,
             ]
         },
         {
@@ -248,8 +248,8 @@ if (Config.GATESET == 'default') {
         {
             hint: 'Silly',
             gates: [
-                ZeroGate,   MysteryGateMaker(),
-                NeGate,     undefined,
+                ZeroGate, MysteryGateMaker(),
+                NeGate, undefined,
                 SpacerGate, undefined
             ]
         }
@@ -440,7 +440,7 @@ if (Config.GATESET == 'default') {
         },
     ];
 } else {
-    throw('Unknown gate set: ' + Config.GATESET);
+    throw ('Unknown gate set: ' + Config.GATESET);
 }
 
-export {Gates}
+export { Gates }
