@@ -439,6 +439,25 @@ if (Config.GATESET == 'Default') {
             ]
         },
     ];
+} else if (Config.GATESET == 'Classical') {
+
+    /** @type {!Array<!{hint: !string, gates: !Array<undefined|!Gate>}>} */
+    Gates.TopToolboxGroups = [
+        {
+            hint: "Operations",
+            gates: [
+                HalfTurnGates.X,
+                Controls.Control,
+                PostSelectionGates.PostSelectCoinFlip,
+            ]
+        },
+        {
+            hint: "Displays",
+            gates: [
+                ProbabilityDisplayFamily.ofSize(2),
+            ]
+        },
+    ];
 } else {
     throw ('Unknown gate set: ' + Config.GATESET);
 }

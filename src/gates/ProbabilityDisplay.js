@@ -100,7 +100,7 @@ function probabilityPixelsToColumnVector(pixels, span) {
 
 function disableUnlessMeasured(args) {
     let allMeasured = ((args.measuredMask >> args.outerRow) & ((1 << args.gate.height) - 1)) == ((1 << args.gate.height) - 1);
-    if (!allMeasured)
+    if (Config.QUANTUM_BITS && !allMeasured)
         return "must measure first";
     return undefined;
 }
@@ -209,11 +209,14 @@ function _paintMultiProbabilityDisplay_tooltips(args) {
         if (args.rect.containsPoint(pt) && k >= 0 && k < n) {
             let p = probabilities === undefined ? NaN : probabilities.rawBuffer()[k * 2];
             painter.strokeRect(new Rect(x, y + k * d, w, d), 'orange', 2);
+            let label = Config.QUANTUM_BITS ?
+                `Chance of outcome |${Util.bin(k, args.gate.height)}⟩ if measured:` :
+                `Chance of outcome [${Util.bin(k, args.gate.height)}] if measured:`;
             MathPainter.paintDeferredValueTooltip(
                 painter,
                 x + w,
                 y + k * d,
-                `Chance of outcome |${Util.bin(k, args.gate.height)}⟩ if measured:`,
+                label,
                 (p * 100).toFixed(4) + "%");
                 // 'log: ' + (Math.log10(p) * 10).toFixed(1) + " dB");
         }

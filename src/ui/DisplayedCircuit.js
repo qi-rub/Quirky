@@ -371,12 +371,14 @@ class DisplayedCircuit {
             for (let row = 0; row < drawnWireCount; row++) {
                 let wireRect = this.wireRect(row);
                 let y = wireRect.center().y;
-                painter.print('|0⟩', Config.CIRCUIT_OP_LEFT_SPACING - 15, y, 'right', 'middle', 'black', '14px sans-serif', 20, Config.WIRE_SPACING);
+                let label = Config.QUANTUM_BITS ? '|0>' : '[0]';
+                painter.print(label, Config.CIRCUIT_OP_LEFT_SPACING - 15, y, 'right', 'middle', 'black', '14px sans-serif', 20, Config.WIRE_SPACING);
 
                 if (this.circuitDefinition.numWires > 1) {
                     let number = this.circuitDefinition.numWires - row;
                     // painter.fillRect(new Rect(0, y - 10, Config.CIRCUIT_OP_LEFT_SPACING - 50, 20), Config.BACKGROUND_COLOR_TOOLBOX);
-                    painter.print('Qubit ' + number + ':', 5, y, 'left', 'middle', 'black', 'bold 14px sans-serif', 100, Config.WIRE_SPACING);
+                    let label = Config.QUANTUM_BITS ? 'Qubit' : 'Bit';
+                    painter.print(label + ' ' + number + ':', 5, y, 'left', 'middle', 'black', 'bold 14px sans-serif', 100, Config.WIRE_SPACING);
                 }
             }
         }
@@ -543,7 +545,9 @@ class DisplayedCircuit {
             this._drawGate_disabledReason(painter, col, row, gateRect, isHighlighted);
         }
 
-        this._drawColumnSurvivalRate(painter, gateColumn, col, stats);
+        if (Config.QUANTUM_BITS) {
+            this._drawColumnSurvivalRate(painter, gateColumn, col, stats);
+        }
     }
 
     /**
@@ -621,7 +625,7 @@ class DisplayedCircuit {
         let x = Math.round(this.opRect(columnIndex).center().x - 0.5) + 0.5;
 
         // Dashed line indicates effects from non-unitary gates may affect, or appear to affect, other wires.
-        if (this.circuitDefinition.columns[columnIndex].hasGatesWithGlobalEffects()) {
+        if (Config.QUANTUM_BITS && this.circuitDefinition.columns[columnIndex].hasGatesWithGlobalEffects()) {
             painter.ctx.save();
             painter.ctx.setLineDash([1, 4]);
             painter.strokeLine(
@@ -1265,7 +1269,7 @@ class DisplayedCircuit {
 
         // Discard rate warning.
         let survivalRate = stats.survivalRate(Infinity);
-        if (Math.abs(survivalRate - 1) > 0.01) {
+        if (Config.QUANTUM_BITS && Math.abs(survivalRate - 1) > 0.01) {
             let desc;
             if (survivalRate < 1) {
                 let rate = Math.round(survivalRate * 100);

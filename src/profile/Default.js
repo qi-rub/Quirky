@@ -29,6 +29,7 @@ Config.REAL_AMPLITUDES = false;
 Config.COMPLEX_ERROR_THRESHOLD = 1e-4;
 Config.SINGLE_QUBIT_DISPLAYS = false;
 Config.FINAL_AMPLITUDES = false;
+Config.QUANTUM_BITS = true;
 
 // Each qubit (when actually used) doubles the cost of simulating each gate applied to the circuit.
 // Also each qubit tends to increase the amount of accuracy required.

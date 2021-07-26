@@ -92,6 +92,16 @@ PostSelectionGates.PostSelectY = new GateBuilder().
     setKnownEffectToMatrix(Matrix.square(1, Complex.I, Complex.I.neg(), 1).times(0.5)).
     gate;
 
+/** @type {!Gate} */
+PostSelectionGates.PostSelectCoinFlip = new GateBuilder().
+    setSerializedId("CoinFlip").
+    setSymbol("🪙").
+    setTitle("Coin Flip").
+    setBlurb("Flips a fair coin.").
+    setDrawer(POST_SELECT_DRAWER).
+    setKnownEffectToMatrix(Matrix.square(1, 1, 1, 1).times(0.5)).
+    gate;
+
 PostSelectionGates.all = [
     PostSelectionGates.PostSelectOff,
     PostSelectionGates.PostSelectOn,

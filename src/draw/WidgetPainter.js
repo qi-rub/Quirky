@@ -307,7 +307,9 @@ class WidgetPainter {
             Config.REAL_AMPLITUDES ? factor.toString(format, Config.REAL_AMPLITUDES) + ' ' : '(' + factor.toString(format) + ')·';
 
         let bitDesc = Util.bin(bitMask, bitCount);
-        return scaleFactorDesc + '|' + bitDesc + '⟩';
+        return Config.QUANTUM_BITS ?
+            scaleFactorDesc + '|' + bitDesc + '⟩' :
+            scaleFactorDesc + '[' + bitDesc + ']';
     }
     /**
      * @param {!Array.<!number>} unitAxis x, y, z
