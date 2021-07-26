@@ -448,7 +448,7 @@ if (Config.GATESET == 'Default') {
             gates: [
                 HalfTurnGates.X,
                 Controls.Control,
-                PostSelectionGates.PostSelectCoinFlip,
+                PostSelectionGates.PostSelectCoinToss,
             ]
         },
         {

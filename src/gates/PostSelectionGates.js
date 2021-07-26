@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import {Config} from "src/Config.js"
 import {Complex} from "src/math/Complex.js"
 import {GateBuilder} from "src/circuit/Gate.js"
 import {GatePainting} from "src/draw/GatePainting.js"
@@ -27,7 +28,7 @@ let POST_SELECT_DRAWER = args => {
         GatePainting.paintGateSymbol(args);
     }
 
-    if (!args.isInToolbox) {
+    if (Config.QUANTUM_BITS && !args.isInToolbox) {
         let {x, y, w, h} = args.rect;
         args.painter.print("post-", x + w / 2, y, 'center', 'hanging', 'red', '10px sans-serif', w, h / 2);
         args.painter.print("select", x + w / 2, y + h, 'center', 'bottom', 'red', '10px sans-serif', w, h / 2);
@@ -93,11 +94,11 @@ PostSelectionGates.PostSelectY = new GateBuilder().
     gate;
 
 /** @type {!Gate} */
-PostSelectionGates.PostSelectCoinFlip = new GateBuilder().
-    setSerializedId("CoinFlip").
+PostSelectionGates.PostSelectCoinToss = new GateBuilder().
     setSymbol("🪙").
-    setTitle("Coin Flip").
-    setBlurb("Flips a fair coin.").
+    setSerializedId("CoinToss").
+    setTitle("Coin Toss").
+    setBlurb("Toss a fair coin.").
     setDrawer(POST_SELECT_DRAWER).
     setKnownEffectToMatrix(Matrix.square(1, 1, 1, 1).times(0.5)).
     gate;

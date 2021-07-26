@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import {Config} from "src/Config.js"
 import {GateBuilder} from "src/circuit/Gate.js"
 import {GatePainting} from "src/draw/GatePainting.js"
 import {GateShaders} from "src/circuit/GateShaders.js"
@@ -23,7 +24,9 @@ let Controls = {};
 Controls.Control = new GateBuilder().
     setSerializedIdAndSymbol("•").
     setTitle("Control").
-    setBlurb("Conditions on a qubit being ONE.\n\nGates in the same column only apply to states meeting the condition.").
+    setBlurb(Config.QUANTUM_BITS ?
+        "Conditions on a qubit being ONE.\n\nGates in the same column only apply to states meeting the condition." :
+        "Conditions on a bit being ONE.\n\nGates in the same column only apply to states meeting the condition.").
     promiseHasNoNetEffectOnStateVector().
     markAsControlExpecting(true).
     setDrawer(args => {
