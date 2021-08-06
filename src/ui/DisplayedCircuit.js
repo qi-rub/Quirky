@@ -398,7 +398,8 @@ class DisplayedCircuit {
                         showLabels ? lastX < painter.canvas.width : col <= this.circuitDefinition.columns.length;
                         col++) {
                     let x = this.opRect(col).center().x;
-                    if (this.circuitDefinition.locIsMeasured(new Point(col, row))) {
+                    if (this.circuitDefinition.locIsMeasured(new Point(col, row))
+                     || !Config.QUANTUM_BITS) {
                         // Measured wire.
                         trace.line(lastX, y-1, x, y-1);
                         trace.line(lastX, y+1, x, y+1);
