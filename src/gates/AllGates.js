@@ -336,6 +336,24 @@ if (Config.GATESET == 'Default') {
             hint: "Operations",
             gates: [
                 HalfTurnGates.X,
+                PostSelectionGates.PostSelectCoinToss,
+            ]
+        },
+        {
+            hint: "Displays",
+            gates: [
+                ProbabilityDisplayFamily.ofSize(1),
+            ]
+        },
+    ];
+} else if (Config.GATESET == 'Quest 2') {
+
+    /** @type {!Array<!{hint: !string, gates: !Array<undefined|!Gate>}>} */
+    Gates.TopToolboxGroups = [
+        {
+            hint: "Operations",
+            gates: [
+                HalfTurnGates.X,
                 MeasurementGate,
                 ExponentiatingGates.MysteryQubitRotation,
                 // ExponentiatingGates.RotateQubit,
@@ -360,7 +378,7 @@ if (Config.GATESET == 'Default') {
         //     ]
         // },
     ];
-} else if (Config.GATESET == 'Quest 2') {
+} else if (Config.GATESET == 'Quest 3') {
 
     /** @type {!Array<!{hint: !string, gates: !Array<undefined|!Gate>}>} */
     Gates.TopToolboxGroups = [
@@ -383,7 +401,7 @@ if (Config.GATESET == 'Default') {
             ]
         },
     ];
-} else if (Config.GATESET == 'Quest 3') {
+} else if (Config.GATESET == 'Quest 4') {
 
     /** @type {!Array<!{hint: !string, gates: !Array<undefined|!Gate>}>} */
     Gates.TopToolboxGroups = [
@@ -406,7 +424,7 @@ if (Config.GATESET == 'Default') {
             ]
         },
     ];
-} else if (Config.GATESET == 'Quest 4') {
+} else if (Config.GATESET == 'Quest 5') {
 
     /** @type {!Array<!{hint: !string, gates: !Array<undefined|!Gate>}>} */
     Gates.TopToolboxGroups = [
@@ -454,6 +472,7 @@ if (Config.GATESET == 'Default') {
         {
             hint: "Displays",
             gates: [
+                AmplitudeDisplayFamily.ofSize(2),
                 ProbabilityDisplayFamily.ofSize(2),
             ]
         },
