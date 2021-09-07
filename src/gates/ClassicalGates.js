@@ -15,8 +15,18 @@ ClassicalGates.CoinToss = new GateBuilder().
     setKnownEffectToMatrix(Matrix.square(1, 1, 1, 1).times(0.5)).
     gate;
 
+ClassicalGates.MysteryBitOperation = new GateBuilder().
+    setSerializedId("MysteryBop").
+    setSymbol("Mystery").
+    setTitle("A mysterious operation").
+    setBlurb("Can you find out what it does?").
+    setDrawer(GatePainting.MAKE_HIGHLIGHTED_DRAWER('yellow', 'yellow')).
+    setKnownEffectToMatrix(Matrix.square(0.2, 0.7, 0.8, 0.3)).
+    gate;
+
 ClassicalGates.all = [
-    ClassicalGates.CoinToss
+    ClassicalGates.CoinToss,
+    ClassicalGates.MysteryBitOperation
 ];
 
 

@@ -340,6 +340,7 @@ if (Config.GATESET == 'Default') {
             gates: [
                 HalfTurnGates.X,
                 // ClassicalGates.CoinToss,
+                ClassicalGates.MysteryBitOperation
             ]
         },
         {
