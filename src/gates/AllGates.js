@@ -397,7 +397,7 @@ if (Config.GATESET == 'Default') {
         {
             hint: "Displays",
             gates: [
-                ProbabilityDisplayFamily.ofSize(1),
+                ProbabilityDisplayFamily.ofSize(2),
             ]
         },
     ];
