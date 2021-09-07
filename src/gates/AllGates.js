@@ -339,7 +339,7 @@ if (Config.GATESET == 'Default') {
             hint: "Operations",
             gates: [
                 HalfTurnGates.X,
-                ClassicalGates.CoinToss,
+                // ClassicalGates.CoinToss,
             ]
         },
         {
@@ -469,7 +469,7 @@ if (Config.GATESET == 'Default') {
             gates: [
                 HalfTurnGates.X,
                 Controls.Control,
-                ClassicalGates.CoinToss,
+                // ClassicalGates.CoinToss,
             ]
         },
         {
