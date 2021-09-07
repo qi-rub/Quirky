@@ -71,10 +71,18 @@ const AMPLITUDES_TO_PROBABILITIES_SHADER = makePseudoShaderWithInputsAndOutputAn
         Inputs.bool('control')
     ],
     Outputs.float(),
+    // l^1 norm for classical bits, l^2 norm for quantum bits
+    Config.QUANTUM_BITS ?
     `float outputFor(float k) {
         vec2 amp = read_input(k);
         return dot(amp, amp) * read_control(k);
-    }`);
+        }`
+        :
+        `float outputFor(float k) {
+            vec2 amp = read_input(k);
+            return (amp.x + amp.y) * read_control(k);
+        }`
+);
 
 /**
  * Post-processes the pixels that come out of makeProbabilitySpanPipeline into a vector of normalized probabilities.
