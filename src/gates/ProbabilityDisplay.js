@@ -93,8 +93,8 @@ const AMPLITUDES_TO_PROBABILITIES_SHADER = makePseudoShaderWithInputsAndOutputAn
 function probabilityPixelsToColumnVector(pixels, span) {
     let n = 1 << span;
     let unity = 0;
-    for (let e of pixels) {
-        unity += e;
+    for (let i = 0; i < n; i++) {
+        unity += pixels[i];
     }
     if (isNaN(unity) || unity < 0.000001) {
         return Matrix.zero(1, n).times(NaN);
@@ -219,7 +219,7 @@ function _paintMultiProbabilityDisplay_tooltips(args) {
             painter.strokeRect(new Rect(x, y + k * d, w, d), 'orange', 2);
             let label = Config.QUANTUM_BITS ?
                 `Chance of outcome |${Util.bin(k, args.gate.height)}⟩ if measured:` :
-                `Chance of outcome [${Util.bin(k, args.gate.height)}] if measured:`;
+                `Chance of outcome [${Util.bin(k, args.gate.height)}]:`;
             MathPainter.paintDeferredValueTooltip(
                 painter,
                 x + w,
@@ -321,7 +321,7 @@ function singleChanceGateMaker(builder) {
 }
 
 let ProbabilityDisplayFamily = Gate.buildFamily(1, 16, (span, builder) =>
-    span === 1 ?
+    span === 1 && Config.QUANTUM_BITS ?
         singleChanceGateMaker(builder) :
         multiChanceGateMaker(span, builder));
 
