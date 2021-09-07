@@ -321,9 +321,10 @@ function singleChanceGateMaker(builder) {
 }
 
 let ProbabilityDisplayFamily = Gate.buildFamily(1, 16, (span, builder) =>
-    span === 1 && Config.QUANTUM_BITS ?
-        singleChanceGateMaker(builder) :
-        multiChanceGateMaker(span, builder));
+    multiChanceGateMaker(span, builder));
+// span === 1 && Config.QUANTUM_BITS ?
+//     singleChanceGateMaker(builder) :
+//     multiChanceGateMaker(span, builder));
 
 export {
     ProbabilityDisplayFamily,
