@@ -21,7 +21,7 @@ Config.QUIRKY_URL = 'https://github.com/amsqi/Quirky';
 
 Config.SHOW_GATE_FORGE_BUTTON = true;
 Config.SHOW_SIMPLE_GATE_FORGE_BUTTON = false;
-Config.SHOW_CLASSICAL_FLIP_GATE_FORGE_BUTTON = false;
+Config.SHOW_CLASSICAL_GATE_FORGE_BUTTON = false;
 Config.DRAW_HINTS = true;
 Config.SHOW_MAX_WIRES_WARNING = true;
 

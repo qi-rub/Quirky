@@ -6,7 +6,7 @@ Config.LONG_SUBTITLE = 'Quest 1: Master of probabilities';
 Config.QUIRKY_URL = '.';
 
 Config.SHOW_GATE_FORGE_BUTTON = false;
-Config.SHOW_CLASSICAL_FLIP_GATE_FORGE_BUTTON = true;
+Config.SHOW_CLASSICAL_GATE_FORGE_BUTTON = true;
 Config.DRAW_HINTS = false;
 Config.SHOW_MAX_WIRES_WARNING = false;
 

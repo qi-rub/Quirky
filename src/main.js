@@ -13,36 +13,36 @@
 // limitations under the License.
 
 // It's important that the polyfills and error fallback get loaded first!
-import {} from "src/browser/Polyfills.js"
-import {hookErrorHandler} from "src/fallback.js"
+import { } from "src/browser/Polyfills.js"
+import { hookErrorHandler } from "src/fallback.js"
 hookErrorHandler();
-import {doDetectIssues} from "src/issues.js"
+import { doDetectIssues } from "src/issues.js"
 doDetectIssues();
 
-import {CooldownThrottle} from "src/base/CooldownThrottle.js"
-import {Config} from "src/Config.js"
-import {DisplayedInspector} from "src/ui/DisplayedInspector.js"
-import {Painter} from "src/draw/Painter.js"
-import {Rect} from "src/math/Rect.js"
-import {RestartableRng} from "src/base/RestartableRng.js"
-import {Revision} from "src/base/Revision.js"
-import {initSerializer, fromJsonText_CircuitDefinition} from "src/circuit/Serializer.js"
-import {TouchScrollBlocker} from "src/browser/TouchScrollBlocker.js"
-import {Util} from "src/base/Util.js"
-import {initializedWglContext} from "src/webgl/WglContext.js"
-import {watchDrags, isMiddleClicking, eventPosRelativeTo} from "src/browser/MouseWatcher.js"
-import {ObservableValue, ObservableSource} from "src/base/Obs.js"
-import {initExports, obsExportsIsShowing} from "src/ui/exports.js"
-import {initForge, obsForgeIsShowing} from "src/ui/forge.js"
-import {initSimpleForge, obsSimpleForgeIsShowing} from "src/ui/simpleforge.js"
-import {initUndoRedo} from "src/ui/undo.js"
-import {initClear} from "src/ui/clear.js"
-import {initUrlCircuitSync} from "src/ui/url.js"
-import {initTitleSync} from "src/ui/title.js"
-import {simulate} from "src/ui/sim.js"
-import {GatePainting} from "src/draw/GatePainting.js"
-import {GATE_CIRCUIT_DRAWER} from "src/ui/DisplayedCircuit.js"
-import { initClassicalFlipForge, obsClassicalFlipForgeIsShowing } from "src/ui/classicalflipforge.js"
+import { CooldownThrottle } from "src/base/CooldownThrottle.js"
+import { Config } from "src/Config.js"
+import { DisplayedInspector } from "src/ui/DisplayedInspector.js"
+import { Painter } from "src/draw/Painter.js"
+import { Rect } from "src/math/Rect.js"
+import { RestartableRng } from "src/base/RestartableRng.js"
+import { Revision } from "src/base/Revision.js"
+import { initSerializer, fromJsonText_CircuitDefinition } from "src/circuit/Serializer.js"
+import { TouchScrollBlocker } from "src/browser/TouchScrollBlocker.js"
+import { Util } from "src/base/Util.js"
+import { initializedWglContext } from "src/webgl/WglContext.js"
+import { watchDrags, isMiddleClicking, eventPosRelativeTo } from "src/browser/MouseWatcher.js"
+import { ObservableValue, ObservableSource } from "src/base/Obs.js"
+import { initExports, obsExportsIsShowing } from "src/ui/exports.js"
+import { initForge, obsForgeIsShowing } from "src/ui/forge.js"
+import { initSimpleForge, obsSimpleForgeIsShowing } from "src/ui/simpleforge.js"
+import { initUndoRedo } from "src/ui/undo.js"
+import { initClear } from "src/ui/clear.js"
+import { initUrlCircuitSync } from "src/ui/url.js"
+import { initTitleSync } from "src/ui/title.js"
+import { simulate } from "src/ui/sim.js"
+import { GatePainting } from "src/draw/GatePainting.js"
+import { GATE_CIRCUIT_DRAWER } from "src/ui/DisplayedCircuit.js"
+import { initClassicalForge, obsClassicalForgeIsShowing } from "src/ui/classicalforge.js"
 initSerializer(
     GatePainting.LABEL_DRAWER,
     GatePainting.MATRIX_DRAWER,
@@ -70,15 +70,15 @@ if (!canvas) {
     throw new Error("Couldn't find 'drawCanvas'");
 }
 canvas.width = canvasDiv.clientWidth;
-canvas.height = window.innerHeight*0.9;
+canvas.height = window.innerHeight * 0.9;
 let haveLoaded = false;
 const semiStableRng = (() => {
-    const target = {cur: new RestartableRng()};
+    const target = { cur: new RestartableRng() };
     let cycleRng;
     cycleRng = () => {
         target.cur = new RestartableRng();
         //noinspection DynamicallyGeneratedCodeJS
-        setTimeout(cycleRng, Config.SEMI_STABLE_RANDOM_VALUE_LIFETIME_MILLIS*0.99);
+        setTimeout(cycleRng, Config.SEMI_STABLE_RANDOM_VALUE_LIFETIME_MILLIS * 0.99);
     };
     cycleRng();
     return target;
@@ -290,13 +290,13 @@ initUrlCircuitSync(revision);
 initExports(revision, obsIsAnyOverlayShowing.observable());
 initForge(revision, obsIsAnyOverlayShowing.observable());
 initSimpleForge(revision, obsIsAnyOverlayShowing.observable());
-initClassicalFlipForge(revision, obsIsAnyOverlayShowing.observable());
+initClassicalForge(revision, obsIsAnyOverlayShowing.observable());
 initUndoRedo(revision, obsIsAnyOverlayShowing.observable());
 initClear(revision, obsIsAnyOverlayShowing.observable());
 initTitleSync(revision);
 obsForgeIsShowing.
     zipLatest(obsSimpleForgeIsShowing, (e1, e2) => e1 || e2).
-    zipLatest(obsClassicalFlipForgeIsShowing, (e1, e2) => e1 || e2).
+    zipLatest(obsClassicalForgeIsShowing, (e1, e2) => e1 || e2).
     zipLatest(obsExportsIsShowing, (e1, e2) => e1 || e2).
     whenDifferent().
     subscribe(e => {
@@ -313,8 +313,8 @@ setTimeout(() => {
     if (Config.SHOW_SIMPLE_GATE_FORGE_BUTTON) {
         document.getElementById('simple-gate-forge-button').style.display = 'inline';
     }
-    if (Config.SHOW_CLASSICAL_FLIP_GATE_FORGE_BUTTON) {
-        document.getElementById('classical-flip-gate-forge-button').style.display = 'inline';
+    if (Config.SHOW_CLASSICAL_GATE_FORGE_BUTTON) {
+        document.getElementById('classical-gate-forge-button').style.display = 'inline';
     }
     inspectorDiv.style.display = 'block';
     redrawNow();

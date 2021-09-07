@@ -6,33 +6,33 @@ import { Matrix } from "src/math/Matrix.js"
 import { Observable, ObservableValue } from "src/base/Obs.js"
 import { fromJsonText_CircuitDefinition, Serializer } from "src/circuit/Serializer.js"
 
-const classicalFlipForgeIsVisible = new ObservableValue(false);
-const obsClassicalFlipForgeIsShowing = classicalFlipForgeIsVisible.observable().whenDifferent();
+const classicalForgeIsVisible = new ObservableValue(false);
+const obsClassicalForgeIsShowing = classicalForgeIsVisible.observable().whenDifferent();
 
-function initClassicalFlipForge(revision, obsIsAnyOverlayShowing) {
-    const obsOnShown = obsClassicalFlipForgeIsShowing.filter(e => e === true);
+function initClassicalForge(revision, obsIsAnyOverlayShowing) {
+    const obsOnShown = obsClassicalForgeIsShowing.filter(e => e === true);
     /** @type {!String} */
     let latestInspectorText;
     revision.latestActiveCommit().subscribe(e => { latestInspectorText = e; });
 
     // Show/hide forge overlay.
     (() => {
-        const forgeButton = /** @type {!HTMLButtonElement} */ document.getElementById('classical-flip-gate-forge-button');
-        const forgeOverlay = /** @type {!HTMLDivElement} */ document.getElementById('classical-flip-gate-forge-overlay');
-        const forgeDiv = /** @type {HTMLDivElement} */ document.getElementById('classical-flip-gate-forge-div');
-        forgeButton.addEventListener('click', () => classicalFlipForgeIsVisible.set(true));
-        forgeOverlay.addEventListener('click', () => classicalFlipForgeIsVisible.set(false));
+        const forgeButton = /** @type {!HTMLButtonElement} */ document.getElementById('classical-gate-forge-button');
+        const forgeOverlay = /** @type {!HTMLDivElement} */ document.getElementById('classical-gate-forge-overlay');
+        const forgeDiv = /** @type {HTMLDivElement} */ document.getElementById('classical-gate-forge-div');
+        forgeButton.addEventListener('click', () => classicalForgeIsVisible.set(true));
+        forgeOverlay.addEventListener('click', () => classicalForgeIsVisible.set(false));
         obsIsAnyOverlayShowing.subscribe(e => { forgeButton.disabled = e; });
         document.addEventListener('keydown', e => {
             const ESC_KEY = 27;
             if (e.keyCode === ESC_KEY) {
-                classicalFlipForgeIsVisible.set(false)
+                classicalForgeIsVisible.set(false)
             }
         });
-        obsClassicalFlipForgeIsShowing.subscribe(showing => {
+        obsClassicalForgeIsShowing.subscribe(showing => {
             forgeDiv.style.display = showing ? 'block' : 'none';
             if (showing) {
-                document.getElementById('classical-flip-gate-forge-probability').focus();
+                document.getElementById('classical-gate-forge-probability').focus();
             }
         });
     })();
@@ -44,16 +44,16 @@ function initClassicalFlipForge(revision, obsIsAnyOverlayShowing) {
     function createCustomGateAndClose(gate, circuitDef = undefined) {
         let c = circuitDef || fromJsonText_CircuitDefinition(latestInspectorText);
         revision.commit(JSON.stringify(Serializer.toJson(c.withCustomGate(gate)), null, 0));
-        classicalFlipForgeIsVisible.set(false);
+        classicalForgeIsVisible.set(false);
     }
 
     (() => {
-        const cancelButton = /** @type {!HTMLInputElement} */ document.getElementById('classical-flip-gate-forge-cancel-button');
-        const rotationButton = /** @type {!HTMLInputElement} */ document.getElementById('classical-flip-gate-forge-ok-button');
-        const txtProbability = /** @type {!HTMLInputElement} */ document.getElementById('classical-flip-gate-forge-probability');
+        const cancelButton = /** @type {!HTMLInputElement} */ document.getElementById('classical-gate-forge-cancel-button');
+        const rotationButton = /** @type {!HTMLInputElement} */ document.getElementById('classical-gate-forge-ok-button');
+        const txtProbability = /** @type {!HTMLInputElement} */ document.getElementById('classical-gate-forge-probability');
 
         cancelButton.addEventListener('click', () => {
-            classicalFlipForgeIsVisible.set(false);
+            classicalForgeIsVisible.set(false);
         });
 
         rotationButton.addEventListener('click', () => {
@@ -116,4 +116,4 @@ function decreasePrecisionAndSerializedSize(matrix) {
     return Matrix.parse(matrix.toString(new Format(true, 0.0000001, 7, ",")))
 }
 
-export { initClassicalFlipForge, obsClassicalFlipForgeIsShowing }
+export { initClassicalForge, obsClassicalForgeIsShowing }
