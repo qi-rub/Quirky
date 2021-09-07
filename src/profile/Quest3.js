@@ -1,4 +1,4 @@
-import {Config} from "src/profile/Quest1.js"
+import { Config } from "src/profile/Quest1.js"
 
 Config.TITLE = 'Quirky Quest 3';
 Config.LONG_TITLE = 'The Quirky Quantum Simulator';
@@ -10,4 +10,4 @@ Config.MAX_WIRE_COUNT = 2;
 Config.TOOLBOX_ROWS = 2;
 Config.CIRCUIT_OP_LEFT_SPACING = 120;
 
-export {Config}
+export { Config }

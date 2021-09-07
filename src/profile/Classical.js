@@ -4,6 +4,8 @@ Config.TITLE = 'Quirky Classical';
 Config.LONG_TITLE = 'The Quirky Quantum Simulator';
 Config.LONG_SUBTITLE = 'Playground with classical probabilistic bits';
 
+Config.SHOW_CLASSICAL_FLIP_GATE_FORGE_BUTTON = true;
+
 Config.GATESET = 'Classical';
 Config.MIN_WIRE_COUNT = 1;
 Config.MAX_WIRE_COUNT = 10;

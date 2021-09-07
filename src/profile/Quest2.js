@@ -1,4 +1,4 @@
-import {Config} from "src/profile/Default.js"
+import { Config } from "src/profile/Default.js"
 
 Config.TITLE = 'Quirky Quest 2';
 Config.LONG_TITLE = 'The Quirky Quantum Simulator';
@@ -20,4 +20,4 @@ Config.TOOLBOX_ROWS = 1;
 Config.MINIMUM_CANVAS_HEIGHT = 200;
 Config.CIRCUIT_OP_LEFT_SPACING = 35;
 
-export {Config}
+export { Config }

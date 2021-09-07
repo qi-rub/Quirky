@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-class Config {}
+class Config { }
 
 Config.TITLE = 'Quirky';
 Config.LONG_TITLE = 'The Quirky Quantum Simulator';
@@ -21,6 +21,7 @@ Config.QUIRKY_URL = 'https://github.com/amsqi/Quirky';
 
 Config.SHOW_GATE_FORGE_BUTTON = true;
 Config.SHOW_SIMPLE_GATE_FORGE_BUTTON = false;
+Config.SHOW_CLASSICAL_FLIP_GATE_FORGE_BUTTON = false;
 Config.DRAW_HINTS = true;
 Config.SHOW_MAX_WIRES_WARNING = true;
 
@@ -108,4 +109,4 @@ Config.DEFAULT_STROKE_THICKNESS = 1;
 Config.CHECK_WEB_GL_ERRORS_EVEN_ON_HOT_PATHS = false;
 Config.SEMI_STABLE_RANDOM_VALUE_LIFETIME_MILLIS = 300;
 
-export {Config}
+export { Config }

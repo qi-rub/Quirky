@@ -36,9 +36,7 @@ class DisplayedInspector {
         /** @type {!DisplayedCircuit} */
         this.displayedCircuit = circuitWidget;
         /** @type {!DisplayedToolbox} */
-        this.displayedToolboxTop = Config.QUANTUM_BITS ?
-            displayedToolboxTop.withCustomGatesInserted(circuitWidget.circuitDefinition.customGateSet) :
-            displayedToolboxTop;
+        this.displayedToolboxTop = displayedToolboxTop.withCustomGatesInserted(circuitWidget.circuitDefinition.customGateSet);
         /** @type {!Hand} */
         this.hand = hand;
         /** @type {!Rect} */

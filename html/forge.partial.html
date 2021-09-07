@@ -102,12 +102,31 @@
             <div style="text-align: center; font-size: larger; font-weight: bold;">U(θ)</div>
 
             <div style="margin-top: 10px; margin-bottom: 10px;">
-                <label for="simple-gate-forge-rotation-angle">Angle:</label>
-                <input tabindex="100" id="simple-gate-forge-rotation-angle" style="width: 60px" placeholder="pi/3">
+                <label for="simple-gate-forge-rotation-angle">Angle θ:</label>
+                <input tabindex="100" id="simple-gate-forge-rotation-angle" style="margin-left: 5px; width: 60px" placeholder="pi/3">
             </div>
                 
-            <button tabindex="101" id="simple-gate-forge-rotation-button">OK</button>
+            <button tabindex="101" id="simple-gate-forge-ok-button">OK</button>
             <button tabindex="102" id="simple-gate-forge-cancel-button">Cancel</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="classical-flip-gate-forge-div" style="display:none">
+    <div id="classical-flip-gate-forge-overlay" style="position:fixed; left: 0; top: 0; height: 100vh; width: 100vw; background: rgba(0, 0, 0, 0.7);">
+    </div>
+    <div style="position: absolute; top: 20px; left: 50px;">
+        <div style="background-color: #eee; padding: 10px; border-radius: 10px;">
+            <div style="text-align: center; font-size: larger; font-weight: bold;">F(f)</div>
+
+            <div style="margin-top: 10px; margin-bottom: 10px;">
+                <label for="classical-flip-gate-forge-probability">Probability f:</label>
+                <input tabindex="100" id="classical-flip-gate-forge-probability" style="margin-left: 5px; width: 60px" placeholder="0.5">
+            </div>
+                
+            <button tabindex="101" id="classical-flip-gate-forge-ok-button">OK</button>
+            <button tabindex="102" id="classical-flip-gate-forge-cancel-button">Cancel</button>
         </div>
     </div>
 </div>

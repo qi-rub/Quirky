@@ -1,12 +1,12 @@
-import {Config} from "src/profile/Default.js"
+import { Config } from "src/profile/Default.js"
 
 Config.TITLE = 'Quirky Quest 1';
 Config.LONG_TITLE = 'The Quirky Quantum Simulator';
-Config.LONG_SUBTITLE = 'Quest 1: Fun with probabilites';
+Config.LONG_SUBTITLE = 'Quest 1: Master of probabilities';
 Config.QUIRKY_URL = '.';
 
 Config.SHOW_GATE_FORGE_BUTTON = false;
-Config.SHOW_SIMPLE_GATE_FORGE_BUTTON = false;
+Config.SHOW_CLASSICAL_FLIP_GATE_FORGE_BUTTON = true;
 Config.DRAW_HINTS = false;
 Config.SHOW_MAX_WIRES_WARNING = false;
 
@@ -21,4 +21,4 @@ Config.TOOLBOX_ROWS = 1;
 Config.MINIMUM_CANVAS_HEIGHT = 200;
 Config.CIRCUIT_OP_LEFT_SPACING = 35;
 
-export {Config}
+export { Config }

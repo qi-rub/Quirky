@@ -42,6 +42,7 @@ import {initTitleSync} from "src/ui/title.js"
 import {simulate} from "src/ui/sim.js"
 import {GatePainting} from "src/draw/GatePainting.js"
 import {GATE_CIRCUIT_DRAWER} from "src/ui/DisplayedCircuit.js"
+import { initClassicalFlipForge, obsClassicalFlipForgeIsShowing } from "src/ui/classicalflipforge.js"
 initSerializer(
     GatePainting.LABEL_DRAWER,
     GatePainting.MATRIX_DRAWER,
@@ -289,11 +290,13 @@ initUrlCircuitSync(revision);
 initExports(revision, obsIsAnyOverlayShowing.observable());
 initForge(revision, obsIsAnyOverlayShowing.observable());
 initSimpleForge(revision, obsIsAnyOverlayShowing.observable());
+initClassicalFlipForge(revision, obsIsAnyOverlayShowing.observable());
 initUndoRedo(revision, obsIsAnyOverlayShowing.observable());
 initClear(revision, obsIsAnyOverlayShowing.observable());
 initTitleSync(revision);
 obsForgeIsShowing.
     zipLatest(obsSimpleForgeIsShowing, (e1, e2) => e1 || e2).
+    zipLatest(obsClassicalFlipForgeIsShowing, (e1, e2) => e1 || e2).
     zipLatest(obsExportsIsShowing, (e1, e2) => e1 || e2).
     whenDifferent().
     subscribe(e => {
@@ -309,6 +312,9 @@ setTimeout(() => {
     }
     if (Config.SHOW_SIMPLE_GATE_FORGE_BUTTON) {
         document.getElementById('simple-gate-forge-button').style.display = 'inline';
+    }
+    if (Config.SHOW_CLASSICAL_FLIP_GATE_FORGE_BUTTON) {
+        document.getElementById('classical-flip-gate-forge-button').style.display = 'inline';
     }
     inspectorDiv.style.display = 'block';
     redrawNow();
