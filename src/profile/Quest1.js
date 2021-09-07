@@ -1,7 +1,7 @@
 import { Config } from "src/profile/Default.js"
 
 Config.TITLE = 'Quirky Quest 1';
-Config.LONG_TITLE = 'The Quirky Quantum Simulator';
+Config.LONG_TITLE = 'The Quirky Probability Simulator';
 Config.LONG_SUBTITLE = 'Quest 1: Master of probabilities';
 Config.QUIRKY_URL = '.';
 
@@ -19,6 +19,6 @@ Config.QUANTUM_BITS = false;
 Config.BACKGROUND_COLOR_TOOLBOX = '#eee';
 Config.TOOLBOX_ROWS = 1;
 Config.MINIMUM_CANVAS_HEIGHT = 200;
-Config.CIRCUIT_OP_LEFT_SPACING = 35;
+Config.CIRCUIT_OP_LEFT_SPACING = 45;
 
 export { Config }

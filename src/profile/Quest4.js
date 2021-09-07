@@ -1,4 +1,4 @@
-import { Config } from "src/profile/Quest2.js"
+import { Config } from "src/profile/Quest3Q.js"
 
 Config.TITLE = 'Quirky Quest 4';
 Config.LONG_TITLE = 'The Quirky Quantum Simulator';

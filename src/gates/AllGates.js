@@ -381,7 +381,26 @@ if (Config.GATESET == 'Default') {
         //     ]
         // },
     ];
-} else if (Config.GATESET == 'Quest 3') {
+} else if (Config.GATESET == 'Quest 3 Classical') {
+
+    /** @type {!Array<!{hint: !string, gates: !Array<undefined|!Gate>}>} */
+    Gates.TopToolboxGroups = [
+        {
+            hint: "Operations",
+            gates: [
+                HalfTurnGates.X,
+                Controls.Control,
+                // ClassicalGates.CoinToss,
+            ]
+        },
+        {
+            hint: "Displays",
+            gates: [
+                ProbabilityDisplayFamily.ofSize(1),
+            ]
+        },
+    ];
+} else if (Config.GATESET == 'Quest 3 Quantum') {
 
     /** @type {!Array<!{hint: !string, gates: !Array<undefined|!Gate>}>} */
     Gates.TopToolboxGroups = [
@@ -457,25 +476,6 @@ if (Config.GATESET == 'Default') {
                 undefined,
                 MysteryGates.BernsteinVaziraniOracle,
                 MysteryGates.LotteryOracle,
-            ]
-        },
-    ];
-} else if (Config.GATESET == 'Classical') {
-
-    /** @type {!Array<!{hint: !string, gates: !Array<undefined|!Gate>}>} */
-    Gates.TopToolboxGroups = [
-        {
-            hint: "Operations",
-            gates: [
-                HalfTurnGates.X,
-                Controls.Control,
-                // ClassicalGates.CoinToss,
-            ]
-        },
-        {
-            hint: "Displays",
-            gates: [
-                ProbabilityDisplayFamily.ofSize(1),
             ]
         },
     ];

@@ -28,7 +28,7 @@ function initTitleSync(revision) {
             }
         } catch (_) {
         }
-        return `${Config.TITLE}: Quantum Circuit Simulator`;
+        return `${Config.TITLE}`;
     };
 
     revision.latestActiveCommit().subscribe(jsonText => {
