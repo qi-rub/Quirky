@@ -68,7 +68,7 @@ function initClassicalForge(revision, obsIsAnyOverlayShowing) {
 
             let gate = new GateBuilder().
                 setSerializedId('~' + Math.floor(Math.random() * (1 << 20)).toString(32)).
-                setSymbol('F(' + txtProbabilityValue + ')').
+                setSymbol('R(' + txtProbabilityValue + ')').
                 //setBlurb('Rotation by an angle of ' + txtProbabilityValue).
                 setKnownEffectToMatrix(mat).
                 gate;
@@ -103,8 +103,8 @@ function parseUserProbability(text) {
  * @returns {!Matrix}
  */
 function parseUserFlip(probText) {
-    let f = parseUserProbability(probText);
-    let result = Matrix.square(1 - f, f, f, 1 - f);
+    let p = parseUserProbability(probText);
+    let result = Matrix.square(1, p, 0, 1 - p);
     return decreasePrecisionAndSerializedSize(result);
 }
 
