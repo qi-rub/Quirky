@@ -12,24 +12,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import {Config} from "src/Config.js"
-import {Complex} from "src/math/Complex.js"
-import {GateBuilder} from "src/circuit/Gate.js"
-import {GatePainting} from "src/draw/GatePainting.js"
-import {Matrix} from "src/math/Matrix.js"
+import { Config } from "src/Config.js"
+import { Complex } from "src/math/Complex.js"
+import { GateBuilder } from "src/circuit/Gate.js"
+import { GatePainting } from "src/draw/GatePainting.js"
+import { Matrix } from "src/math/Matrix.js"
 
 let PostSelectionGates = {};
 
 let POST_SELECT_DRAWER = args => {
-    if (args.isInToolbox  || args.isHighlighted) {
+    if (args.isInToolbox || args.isHighlighted) {
         GatePainting.DEFAULT_DRAWER(args);
     } else {
         args.painter.fillRect(args.rect, 'white');
         GatePainting.paintGateSymbol(args);
     }
 
-    if (Config.QUANTUM_BITS && !args.isInToolbox) {
-        let {x, y, w, h} = args.rect;
+    if (!args.isInToolbox) {
+        let { x, y, w, h } = args.rect;
         args.painter.print("post-", x + w / 2, y, 'center', 'hanging', 'red', '10px sans-serif', w, h / 2);
         args.painter.print("select", x + w / 2, y + h, 'center', 'bottom', 'red', '10px sans-serif', w, h / 2);
     }
@@ -93,16 +93,6 @@ PostSelectionGates.PostSelectY = new GateBuilder().
     setKnownEffectToMatrix(Matrix.square(1, Complex.I, Complex.I.neg(), 1).times(0.5)).
     gate;
 
-/** @type {!Gate} */
-PostSelectionGates.PostSelectCoinToss = new GateBuilder().
-    setSymbol("🪙").
-    setSerializedId("CoinToss").
-    setTitle("Coin Toss").
-    setBlurb("Toss a fair coin.").
-    setDrawer(POST_SELECT_DRAWER).
-    setKnownEffectToMatrix(Matrix.square(1, 1, 1, 1).times(0.5)).
-    gate;
-
 PostSelectionGates.all = [
     PostSelectionGates.PostSelectOff,
     PostSelectionGates.PostSelectOn,
@@ -112,4 +102,4 @@ PostSelectionGates.all = [
     PostSelectionGates.PostSelectY
 ];
 
-export {PostSelectionGates}
+export { PostSelectionGates }

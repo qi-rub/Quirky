@@ -57,6 +57,7 @@ import { VariousZGates } from "src/gates/VariousZGates.js"
 import { XorGates } from "src/gates/XorGates.js"
 import { ZeroGate } from "src/gates/Joke_ZeroGate.js"
 import { MysteryGateMaker } from "src/gates/Joke_MysteryGate.js"
+import { ClassicalGates } from "src/gates/ClassicalGates.js"
 
 import { seq } from "src/base/Seq.js"
 
@@ -117,6 +118,7 @@ Gates.SpacerGate = SpacerGate;
 Gates.UniversalNot = UniversalNotGate;
 Gates.XorGates = XorGates;
 Gates.ZeroGate = ZeroGate;
+Gates.ClassicalGates = ClassicalGates;
 
 /** @type {!Array.<!Gate>} */
 Gates.KnownToSerializer = [
@@ -164,7 +166,8 @@ Gates.KnownToSerializer = [
     ...VariousXGates.all,
     ...VariousYGates.all,
     ...VariousZGates.all,
-    ...XorGates.all
+    ...XorGates.all,
+    ...ClassicalGates.all
 ];
 
 let gatesById = seq(Gates.KnownToSerializer).keyedBy(g => g.serializedId);
@@ -336,7 +339,7 @@ if (Config.GATESET == 'Default') {
             hint: "Operations",
             gates: [
                 HalfTurnGates.X,
-                PostSelectionGates.PostSelectCoinToss,
+                ClassicalGates.CoinToss,
             ]
         },
         {
@@ -466,7 +469,7 @@ if (Config.GATESET == 'Default') {
             gates: [
                 HalfTurnGates.X,
                 Controls.Control,
-                PostSelectionGates.PostSelectCoinToss,
+                ClassicalGates.CoinToss,
             ]
         },
         {
