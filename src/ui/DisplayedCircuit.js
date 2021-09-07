@@ -371,7 +371,7 @@ class DisplayedCircuit {
             for (let row = 0; row < drawnWireCount; row++) {
                 let wireRect = this.wireRect(row);
                 let y = wireRect.center().y;
-                let label = Config.QUANTUM_BITS ? '|0>' : '[0]';
+                let label = Config.QUANTUM_BITS ? '|0⟩' : '[0]';
                 painter.print(label, Config.CIRCUIT_OP_LEFT_SPACING - 15, y, 'right', 'middle', 'black', '14px sans-serif', 20, Config.WIRE_SPACING);
 
                 if (this.circuitDefinition.numWires > 1) {
