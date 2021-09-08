@@ -2,7 +2,7 @@ import { Config } from "src/profile/Default.js"
 
 Config.TITLE = 'Quirky Quest 1';
 Config.LONG_TITLE = 'The Quirky Probability Simulator';
-Config.LONG_SUBTITLE = 'Quest 1: Master of probability';
+Config.LONG_SUBTITLE = 'Quest 1: Maestro of probability';
 Config.QUIRKY_URL = '.';
 
 Config.SHOW_GATE_FORGE_BUTTON = false;
