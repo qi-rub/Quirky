@@ -2,7 +2,7 @@ import { Config } from "src/profile/Default.js"
 
 Config.TITLE = 'Quirky Quest 2';
 Config.LONG_TITLE = 'The Quirky Quantum Simulator';
-Config.LONG_SUBTITLE = 'Quest 2: Conquer the qubit';
+Config.LONG_SUBTITLE = 'Quest 2: Conqueror of the qubit';
 Config.QUIRKY_URL = '.';
 
 Config.SHOW_GATE_FORGE_BUTTON = false;
