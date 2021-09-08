@@ -357,8 +357,8 @@ if (Config.GATESET == 'Default') {
         {
             hint: "Operations",
             gates: [
-                HalfTurnGates.X,
                 MeasurementGate,
+                HalfTurnGates.X,
                 ExponentiatingGates.MysteryQubitRotation,
                 // ExponentiatingGates.RotateQubit,
                 // HalfTurnGates.Z,

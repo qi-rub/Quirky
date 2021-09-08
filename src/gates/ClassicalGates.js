@@ -20,7 +20,7 @@ ClassicalGates.MysteryBitOperation = new GateBuilder().
     setSymbol("Mystery").
     setTitle("A mysterious operation").
     setBlurb("Can you find out what it does?").
-    setDrawer(GatePainting.MAKE_HIGHLIGHTED_DRAWER('yellow', 'yellow')).
+    setDrawer(GatePainting.MAKE_HIGHLIGHTED_DRAWER('orange', 'orange')).
     setKnownEffectToMatrix(Matrix.square(0.2, 0.7, 0.8, 0.3)).
     gate;
 
