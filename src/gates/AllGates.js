@@ -480,6 +480,38 @@ if (Config.GATESET == 'Default') {
             ]
         },
     ];
+} else if (Config.GATESET == 'LdW') {
+
+    /** @type {!Array<!{hint: !string, gates: !Array<undefined|!Gate>}>} */
+    Gates.TopToolboxGroups = [
+        {
+            hint: "Operations",
+            gates: [
+                HalfTurnGates.X,
+                HalfTurnGates.H,
+                MeasurementGate,
+                HalfTurnGates.Z,
+                // ExponentiatingGates.MysteryQubitRotation,
+                // ExponentiatingGates.RotateQubit,
+                Controls.Control
+            ]
+        },
+        {
+            hint: "Displays",
+            gates: [
+                ProbabilityDisplayFamily.ofSize(1),
+                // BlochSphereDisplay, undefined,
+                // SampleDisplayFamily.ofSize(1),
+                // AmplitudeDisplayFamily.ofSize(1),
+            ]
+        },
+        // {
+        //     hint: "Signals",
+        //     gates: [
+        //         CountingGates.StepFamily.ofSize(1),
+        //     ]
+        // },
+    ];
 } else {
     throw ('Unknown gate set: ' + Config.GATESET);
 }
